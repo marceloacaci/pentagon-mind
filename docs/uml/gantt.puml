@@ -1,0 +1,45 @@
+@startgantt
+title PENTAGON-MIND — Cronograma (Gantt Simplificado)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam gantt {
+  TaskBackgroundColor #0e1116
+  TaskBorderColor #3a4049
+  FontColor #ffffff
+}
+
+Project starts 2026-08-24
+
+-- Fase 1: Arquitetura da Informação e Design (2 semanas) --
+[IA e Design System] as A1
+A1 lasts 14 days
+
+-- Fase 2: Desenvolvimento Frontend Estático (3 semanas) --
+[Templates + 5-10 briefings] as B1
+B1 starts at A1's end
+B1 lasts 21 days
+
+-- Fase 3: Conteúdo + Revisão Técnica (2 semanas) --
+[SEO/WCAG + Revisão] as C1
+C1 starts at B1's end
+C1 lasts 14 days
+
+-- Fase 4: Beta Fechado (1 semana) --
+[Beta analistas + validação tom] as D1
+D1 starts at C1's end
+D1 lasts 7 days
+
+-- Marcos Críticos --
+[Milestone: Design System aprovado] as M1
+M1 happens at A1's end
+
+[Milestone: Validação tom "estéril/técnico" por especialista] as M2
+M2 happens at D1's start
+
+note on link between C1 and D1
+  Marco crítico: validação do tom por
+  especialista ANTES do lançamento público.
+end note
+
+@endgantt

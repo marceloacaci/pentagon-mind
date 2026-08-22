@@ -1,0 +1,41 @@
+@startuml
+title PENTAGON-MIND — Wireframe Baixa Fidelidade (Página de Artigo/Análise)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam rectangle {
+  BackgroundColor #0e1116
+  BorderColor #3a4049
+  FontColor #ffffff
+}
+
+rectangle "TOPBAR (logo + nav)" as TOP
+
+rectangle "HEADER: Título da Análise + Metadados (data, região, tags)" as HDR
+
+rectangle "LEAD: parágrafo de síntese (tese)" as LEAD
+
+rectangle "CORPO: seções com <h2>/<h3>, siglas destacadas (popups)" as BODY
+
+rectangle "BOX: Em outras palavras (explicação para não-especialistas)" as BOX
+
+rectangle "DADOS: gráfico/ficha técnica (orçamento, specs de arma)" as DATA
+
+rectangle "REFERÊNCIAS: CRS / DoD / SIPRI / Foreign Affairs" as REF
+
+rectangle "FOOTER" as FOOT
+
+TOP -down-> HDR
+HDR -down-> LEAD
+LEAD -down-> BODY
+BODY -down-> BOX
+BOX -down-> DATA
+DATA -down-> REF
+REF -down-> FOOT
+
+note right of DATA
+  Destaque para dados técnicos:
+  tabela de specs ou gráfico SVG inline.
+end note
+
+@enduml

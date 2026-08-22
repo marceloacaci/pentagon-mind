@@ -1,0 +1,47 @@
+@startuml
+title PENTAGON-MIND — Wireframe Baixa Fidelidade (index.html)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam rectangle {
+  BackgroundColor #0e1116
+  BorderColor #3a4049
+  FontColor #ffffff
+}
+
+rectangle "TOPBAR (logo + nav: BRIEFING | DOUTRINA | PRESIDÊNCIAS | ARSENAL | GEOPOLÍTICA | GLOSSÁRIO)" as TOP
+
+rectangle "HERO: PENTAGON-MIND / Briefing de Inteligência" as HERO
+
+rectangle "SEÇÃO: Vetores de Ameaça (mapa-múndi + pins + legenda)" as MAP {
+  rectangle "pin: Taiwan" as P1
+  rectangle "pin: Suwałki" as P2
+  rectangle "pin: Ormuz" as P3
+}
+
+rectangle "SEÇÃO: Índices de Capacidade (stats: efetivos, CSGs, tríade, orçamento)" as STATS
+
+rectangle "SEÇÃO: Módulos de Análise (4 cards-link)" as MODS {
+  rectangle "M01 Doutrina" as M1
+  rectangle "M02 Presidências" as M2
+  rectangle "M03 Arsenal" as M3
+  rectangle "M04 Geopolítica" as M4
+}
+
+rectangle "SEÇÃO: Doctrine in Verba (citação)" as CIT
+
+rectangle "FOOTER (links + disclaimer imagens)" as FOOT
+
+TOP -down-> HERO
+HERO -down-> MAP
+MAP -down-> STATS
+STATS -down-> MODS
+MODS -down-> CIT
+CIT -down-> FOOT
+
+note right of MAP
+  Densidade de informação sem poluição:
+  mapa ocupa largura total; pins com popup ao hover/click.
+end note
+
+@enduml

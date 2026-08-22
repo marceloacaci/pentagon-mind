@@ -1,0 +1,37 @@
+@startuml
+title PENTAGON-MIND — Fluxo de Usuário (Analista)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam activity {
+  BackgroundColor #0e1116
+  BorderColor #3a4049
+  FontColor #ffffff
+}
+skinparam arrowColor #c9a227
+
+start
+:Analista acessa index.html (Briefing de Inteligência);
+:Explora mapa de vetores de ameaça + índices de capacidade;
+
+if (Foco de interesse?) then
+  -> Doutrina Militar :
+  :doutrina.html (MDO/JADC2, GPC, COIN);
+elseif (Tecnologia?) then
+  -> Tecnologia de Defesa :
+  :arsenal-tecnologia.html (tríade, F-35, hipersônicos);
+elseif (Geopolítica?) then
+  -> Geopolítica EUA :
+  :impactos-geopoliticos.html (estudos de caso);
+elseif (Presidência?) then
+  -> Nexo Executivo :
+  :politicas-presidenciais.html (matriz Bush→Trump);
+endif
+
+:Encontra sigla destacada (span.term);
+:Popups inline abrem (js/glossary.js) OU abre glossario.html;
+:Consulta Referências (CRS/DoD/SIPRI);
+:Conclui análise;
+stop
+
+@enduml

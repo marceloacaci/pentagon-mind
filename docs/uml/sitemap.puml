@@ -1,0 +1,37 @@
+@startuml
+title PENTAGON-MIND — Sitemap (Mapa do Site)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam node {
+  BackgroundColor #0e1116
+  BorderColor #3a4049
+  FontColor #ffffff
+}
+skinparam arrowColor #c9a227
+
+rectangle "PENTAGON-MIND" as ROOT {
+  node "index.html\nBriefing de Inteligência" as IDX
+  node "Doutrina Militar" as DTR
+  node "Tecnologia de Defesa" as ARS
+  node "Geopolítica EUA" as GEO
+  node "Nexo Executivo\n(Presidências)" as POL
+  node "Glossário Analítico" as GLO
+}
+
+IDX --> DTR : categoria-mãe
+IDX --> ARS : categoria-mãe
+IDX --> GEO : categoria-mãe
+IDX --> POL : categoria-mãe
+IDX --> GLO : utilitário transversal
+DTR --> GLO
+ARS --> GLO
+GEO --> GLO
+POL --> GLO
+
+note bottom of GLO
+  Glossário resolve siglas em todas as seções
+  via popups inline (js/glossary.js)
+end note
+
+@enduml

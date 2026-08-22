@@ -1,0 +1,59 @@
+@startuml
+title PENTAGON-MIND — Diagrama de Componentes (Estático)
+
+skinparam backgroundColor #14161a
+skinparam defaultTextColor #ffffff
+skinparam component {
+  BackgroundColor #0e1116
+  BorderColor #3a4049
+  FontColor #ffffff
+}
+skinparam arrowColor #c9a227
+
+package "Conteúdo (HTML)" {
+  [index.html] as IDX
+  [doutrina.html] as DTR
+  [arsenal-tecnologia.html] as ARS
+  [impactos-geopoliticos.html] as GEO
+  [politicas-presidenciais.html] as POL
+  [glossario.html] as GLO
+}
+
+package "Dados (versionado)" {
+  [data/glossary.js\n(33 siglas EN→PT)] as GL
+  [data/ontology.json\n(presidente↔conflito↔arma)] as ON
+}
+
+package "Apresentação (Lógica)" {
+  [css/styles.css\n(design system)] as CSS
+  [js/nav.js\n(nav/footer)] as NAV
+  [js/glossary.js\n(popups/grid)] as GJS
+  [js/ontology.js] as OJS
+  [js/common.js] as CJS
+}
+
+package "Assets" {
+  [assets/img/*\n(domínio público/Gov. EUA)] as IMG
+}
+
+IDX ..> CSS : estilo
+IDX ..> NAV : navegação
+IDX ..> GJS : glossário
+GJS ..> GL : consome
+DTR ..> ON : cruza
+ARS ..> ON : cruza
+POL ..> ON : cruza
+GLO ..> GL : grid
+NAV ..> CSS
+OJS ..> ON
+
+[Integração Externa\n(potencial, não atual)] as EXT
+EXT ..> ON : build-time (futuro)
+
+note right of EXT
+  Atual: 100% estático, sem backend.
+  Futuro: fontes (CRS/SIPRI/Wikimedia)
+  em build-time, preservando estaticidade.
+end note
+
+@enduml
