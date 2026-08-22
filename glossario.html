@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PENTAGON-MIND — Glossário Analítico &amp; Siglas</title>
+  <meta name="description" content="Glossário completo de siglas e termos técnicos de defesa, doutrina militar e geopolítica dos EUA, com texto completo em inglês, tradução e glossário curto." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-topbar"></div>
+
+  <header class="hero wrap">
+    <p class="eyebrow">// GLOSSÁRIO ANALÍTICO — REFERÊNCIA TÉCNICA</p>
+    <h1>Glossário Analítico &amp; Siglas</h1>
+    <p class="lead">
+      Repositório de siglas e termos técnicos empregados neste portal — doutrina militar, tecnologia
+      de defesa, inteligência e geopolítica dos Estados Unidos. Cada entrada traz o texto completo em
+      inglês, a tradução para o português e um glossário curto. Passe o mouse sobre qualquer sigla
+      destacada (<span class="term" data-term="GPC">GPC</span>) em qualquer página para ver o popup.
+    </p>
+    <div class="meta-row">
+      <span><b>FOCO</b> Termos &amp; siglas</span>
+      <span><b>IDIOMAS</b> EN (texto) → PT (tradução)</span>
+      <span><b>STATUS</b> ATUALIZADO 2026</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section" id="glossario">
+      <h2>Glossário Completo <span class="badge-new">ATUALIZADO 2026</span></h2>
+      <p class="text-muted-keep">
+        Mapa completo de termos técnicos e siglas usados no portal. Clique em qualquer sigla destacada
+        nas páginas para abrir o popup de definição.
+      </p>
+      <div id="glossario-map"></div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/img/media.js"></script>
+  <script src="data/glossary.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/glossary.js"></script>
+  <script src="js/ontology.js"></script>
+  <script>
+    // bind term popups after dynamic content
+    if (window.PM_bindTermPopups) window.PM_bindTermPopups();
+  </script>
+</body>
+</html>

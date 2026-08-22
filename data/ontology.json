@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "schema": "PENTAGON-MIND Ontology v1.0",
+    "description": "Modelo relacional de Administrações Presidenciais, Doutrinas, Conflitos e Sistemas de Armas dos EUA. Captura referências cruzadas para mapear quais doutrinas/sistemas foram empregados por presidentes em conflitos específicos.",
+    "generated": "2026-08-21",
+    "sources_style": ["CRS Reports", "DoD Joint Publications", "SIPRI Yearbook", "Joint Forces Quarterly", "Foreign Affairs"],
+    "note": "Dados de caráter histórico e público. Vítimas expressas como estimativas amplas (aprox.) conforme literatura acadêmica (SIPRI/CRS)."
+  },
+
+  "administrations": [
+    { "id": "bush41", "name": "George H. W. Bush", "term": "1989–1993", "party": "Republicano",
+      "posture": "Multilateralismo; Nova Ordem Mundial; contenção de hegemias regionais pós-Guerra Fria.",
+      "keyDoctrines": ["doct-powell", "doct-airland"], "keyConflicts": ["conf-gulf1991"], "keySystems": ["ws-m1", "ws-tomahawk", "ws-f15e"],
+      "legacy": "Consolidação do papel dos EUA como única superpotência; arquitetura de coalizão ampla (ONU/OTAN)." },
+
+    { "id": "clinton", "name": "Bill Clinton", "term": "1993–2001", "party": "Democrata",
+      "posture": "Internacionalismo liberal; Revolução nos Assuntos Militares (RMA); intervenções humanitárias; expansão da OTAN.",
+      "keyDoctrines": ["doct-rma"], "keyConflicts": ["conf-balkans", "conf-somalia"], "keySystems": ["ws-gps", "ws-tomahawk", "ws-f16"],
+      "legacy": "Precisão cinética como instrumento de política; intervenções de baixo risco de vítimas próprias." },
+
+    { "id": "bush43", "name": "George W. Bush", "term": "2001–2009", "party": "Republicano",
+      "posture": "Doutrina Bush (2002); unilateralismo; ataque preventivo; Guerra ao Terror global.",
+      "keyDoctrines": ["doct-bush", "doct-coin"], "keyConflicts": ["conf-afghanistan", "conf-iraq2003"], "keySystems": ["ws-m1", "ws-predator", "ws-mq9"],
+      "legacy": "Sobreextensão estrutural das forças terrestres; normalização de drone armado e detenção em Guantánamo." },
+
+    { "id": "obama", "name": "Barack Obama", "term": "2009–2017", "party": "Democrata",
+      "posture": "Pivô para a Ásia; Guerra Aérea Não Tripulada; Guerra Remota/por procuração; redução de boots-on-the-ground.",
+      "keyDoctrines": ["doct-coin", "doct-gpc-precursor"], "keyConflicts": ["conf-libya", "conf-syria", "conf-afghanistan"], "keySystems": ["ws-mq9", "ws-f22", "ws-arpanet-legacy"],
+      "legacy": "Institucionalização da campanha de drones; reequilíbrio estratégico para o Indo-Pacífico." },
+
+    { "id": "trump", "name": "Donald J. Trump", "term": "2017–2021", "party": "Republicano",
+      "posture": "America First; pressão de compartilhamento de custos na OTAN; modernização nuclear; criação da USSF.",
+      "keyDoctrines": ["doct-gpc"], "keyConflicts": ["conf-soleimani"], "keySystems": ["ws-ussf", "ws-f35", "ws-lrasm"],
+      "legacy": "Militarização do espaço como serviço independente; retomada da competição de grandes potências (GPC) formal." },
+
+    { "id": "biden", "name": "Joseph R. Biden", "term": "2021–2025", "party": "Democrata",
+      "posture": "Dissuasão Integrada; apoio por procuração à Ucrânia; AUKUS; redes bilaterais no Indo-Pacífico.",
+      "keyDoctrines": ["doct-gpc", "doct-mdo"], "keyConflicts": ["conf-ukraine", "conf-taiwan-contingency"], "keySystems": ["ws-himars", "ws-aukus", "ws-replicator"],
+      "legacy": "Dissuasão integrando capacidades militar, econômica, cibernética e diplomática; apoio de segurança em escala industrial." },
+
+    { "id": "trump2", "name": "Donald J. Trump (2º mandato)", "term": "2025–2029", "party": "Republicano",
+      "posture": "Continuidade do America First com escalada tarifária e pressão sobre aliados; reorganização do DoD (Departamento de Guerra/renomeação simbólica em 2025); expansão de GPC contra China; assertividade no Indo-Pacífico e no Oriente Médio; priorização de defesa de fronteira e industrialização de defesa.",
+      "keyDoctrines": ["doct-gpc", "doct-mdo"], "keyConflicts": ["conf-taiwan-contingency", "conf-ukraine", "conf-iran-2025"], "keySystems": ["ws-f35", "ws-ussf", "ws-replicator", "ws-lrasm"],
+      "legacy": "Reforço da competição de grandes potências; reorientação orçamentária para dissuasão no Indo-Pacífico; tensões comerciais e aliências recalibradas (2025–2026)." }
+  ],
+
+  "doctrines": [
+    { "id": "doct-airland", "name": "AirLand Battle (FM 100-5)", "period": "1982–1993",
+      "summary": "Doutrina operacional para conter o Pacto de Varsóvia na Europa; integração profunda de manobra terrestre e poder aéreo para quebrar a continuidade do ataque inimigo.",
+      "fm": "FM 100-5, Operations (1982/1986)", "associatedAdministrations": ["bush41", "reagan (precedente)"] },
+
+    { "id": "doct-powell", "name": "Doutrina Powell", "period": "1990–1991",
+      "summary": "Força avassaladora, objetivos claros e definidos, apoio público, e estratégia de saída. Aplicada na Operação Tempestade no Deserto.",
+      "fm": "Discursos/Testemunho do Gen. Colin Powell (CJCS)", "associatedAdministrations": ["bush41"] },
+
+    { "id": "doct-rma", "name": "Revolução nos Assuntos Militares (RMA)", "period": "1994–2001",
+      "summary": "Exploração de sensores, C4ISR e munição guiada de precisão para ganho assimétrico de eficácia cinética com baixas próprias.",
+      "fm": "Quadro conceitual DoD (período Clinton)", "associatedAdministrations": ["clinton"] },
+
+    { "id": "doct-bush", "name": "Doutrina Bush / Estratégia de Segurança Nacional (2002)", "period": "2002–2008",
+      "summary": "Direito de ataque preventivo contra ameaças iminentes; unilateralismo; primazia da soberania americana sobre regimes hostis.",
+      "fm": "The National Security Strategy of the United States (Sept 2002)", "associatedAdministrations": ["bush43"] },
+
+    { "id": "doct-coin", "name": "Contrainsurreição (FM 3-24)", "period": "2006–2014",
+      "summary": "Doutrina de COIN escrita sob Petraeus; proteção da população como centro de gravidade; 'ganhar corações e mentes'. Declarada obsoleta com a virada à GPC.",
+      "fm": "FM 3-24, Counterinsurgency (2006)", "associatedAdministrations": ["bush43", "obama"] },
+
+    { "id": "doct-gpc-precursor", "name": "Rebalanceamento do Pacífico (Pivô para a Ásia)", "period": "2011–2017",
+      "summary": "Reorientação estratégica de recursos e atenção para a Ásia-Pacífico em resposta à ascensão chinesa; precursor da Competição de Grandes Potências.",
+      "fm": "Guidelines de Defesa do DoD (2011–2012)", "associatedAdministrations": ["obama"] },
+
+    { "id": "doct-gpc", "name": "Competição de Grandes Potências (GPC)", "period": "2018–presente",
+      "summary": "Retorno à competição contra adversários de nível igual/quase-igual (Rússia, China); gestão de A2/AD e coerção sem conflito direto.",
+      "fm": "National Defense Strategy (2018, 2022)", "associatedAdministrations": ["trump", "biden"] },
+
+    { "id": "doct-mdo", "name": "Operações Multidomínio (MDO) & JADC2", "period": "2019–presente",
+      "summary": "Condução integrada em Terra, Mar, Ar, Espaço e Cibernético; JADC2 como espinha dorsal de C2 unificada via nuvem de IA e loops sensor-atirador.",
+      "fm": "TP 525-3-1 (Army MDO); CJADC2", "associatedAdministrations": ["biden"] }
+  ],
+
+  "conflicts": [
+    { "id": "conf-gulf1991", "name": "Operação Tempestade no Deserto", "years": "1991", "administration": "bush41",
+      "doctrine": ["doct-powell", "doct-airland"], "weapons": ["ws-m1", "ws-tomahawk", "ws-f15e", "ws-f16"],
+      "casualtiesApprox": "EUA ~294 mortos em combate; Iraque ~25.000+ (est.)", "scope": "Regional / Coalizão ONU" },
+
+    { "id": "conf-balkans", "name": "Intervenções nos Bálcãs (Bósnia/Kosovo)", "years": "1995; 1999", "administration": "clinton",
+      "doctrine": ["doct-rma"], "weapons": ["ws-tomahawk", "ws-f16", "ws-gps"],
+      "casualtiesApprox": "Vítimas civis reduzidas por precisão cinética; centenas de milhares evitadas por dissuasão aérea", "scope": "Regional / OTAN" },
+
+    { "id": "conf-somalia", "name": "Intervenção Humanitária na Somália", "years": "1992–1995", "administration": "clinton",
+      "doctrine": ["doct-rma"], "weapons": ["ws-m1", "ws-f16"],
+      "casualtiesApprox": "EUA ~43 mortos (Batalha de Mogadíscio, 1993)", "scope": "Operação de paz / humanitária" },
+
+    { "id": "conf-afghanistan", "name": "Guerra do Afeganistão (Enduring Freedom)", "years": "2001–2021", "administration": "bush43",
+      "doctrine": ["doct-bush", "doct-coin"], "weapons": ["ws-mq9", "ws-predator", "ws-m1"],
+      "casualtiesApprox": "EUA ~2.400 mortos; civis ~46.000+ (est. projetos acadêmicos)", "scope": "Global / Guerra ao Terror" },
+
+    { "id": "conf-iraq2003", "name": "Guerra do Iraque (Iraqi Freedom)", "years": "2003–2011", "administration": "bush43",
+      "doctrine": ["doct-bush", "doct-coin"], "weapons": ["ws-m1", "ws-mq9", "ws-tomahawk"],
+      "casualtiesApprox": "EUA ~4.500 mortos; civis iraquianos ~200.000+ (est. amplas)", "scope": "Regional / Guerra ao Terror" },
+
+    { "id": "conf-libya", "name": "Intervenção na Líbia (Odysssey Dawn)", "years": "2011", "administration": "obama",
+      "doctrine": ["doct-gpc-precursor"], "weapons": ["ws-tomahawk", "ws-mq9"],
+      "casualtiesApprox": "Sem baixas americanas em combate; vácuo de poder pós-intervenção", "scope": "Regional / coalizão OTAN" },
+
+    { "id": "conf-syria", "name": "Campanha contra o Estado Islâmico (Síria/Iraque)", "years": "2014–2019", "administration": "obama",
+      "doctrine": ["doct-coin"], "weapons": ["ws-mq9", "ws-f22"],
+      "casualtiesApprox": "Guerra aérea por procuração; baixas americanas limitadas", "scope": "Regional / coalizão" },
+
+    { "id": "conf-soleimani", "name": "Neutralização de Qasem Soleimani", "years": "2020", "administration": "trump",
+      "doctrine": ["doct-gpc"], "weapons": ["ws-mq9"],
+      "casualtiesApprox": "Ação cinética unilateral de precisão; sem baixas americanas", "scope": "Ataque de decapitação / drone" },
+
+    { "id": "conf-ukraine", "name": "Guerra Rússia–Ucrânia (apoio por procuração)", "years": "2022–presente", "administration": "biden",
+      "doctrine": ["doct-gpc", "doct-mdo"], "weapons": ["ws-himars", "ws-patriot", "ws-m777"],
+      "casualtiesApprox": "Apoio de segurança massivo (USAI/PDA); intensidade industrial de munição", "scope": "Proxy / Euro-Atlântico" },
+
+    { "id": "conf-taiwan-contingency", "name": "Contingência no Estreito de Taiwan (deterrente)", "years": "2022–presente", "administration": "biden",
+      "doctrine": ["doct-gpc", "doct-mdo"], "weapons": ["ws-f35", "ws-aukus", "ws-lrasm"],
+      "casualtiesApprox": "Dissuasão ativa; sem engajamento direto", "scope": "Indo-Pacífico / A2-AD" },
+
+    { "id": "conf-iran-2025", "name": "Tensão com o Irã / Operação contra instalações nucleares (2025)", "years": "2025–presente", "administration": "trump2",
+      "doctrine": ["doct-gpc"], "weapons": ["ws-f35", "ws-b2", "ws-tomahawk"],
+      "casualtiesApprox": "Ataques cinéticos de precisão; escalada diplomática com reflexo no preço do petróleo", "scope": "Oriente Médio / Ataque seletivo" }
+  ],
+
+  "weaponSystems": [
+    { "id": "ws-m1", "name": "M1 Abrams", "type": "Carro de combate principal", "domain": "Terra",
+      "introduced": "1980", "administration": "carter-reagan", "status": "Em serviço (M1A2 SEPv3)", "class": "Terrestre" },
+    { "id": "ws-mq9", "name": "MQ-9 Reaper", "type": "VANT armado MALE", "domain": "Ar/Cyber",
+      "introduced": "2007", "administration": "bush43", "status": "Em serviço", "class": "Aéreo/Autônomo" },
+    { "id": "ws-predator", "name": "MQ-1 Predator", "type": "VANT armado (precursor)", "domain": "Ar",
+      "introduced": "1995", "administration": "clinton", "status": "Aposentado", "class": "Aéreo/Autônomo" },
+    { "id": "ws-f15e", "name": "F-15E Strike Eagle", "type": "Caça-bombardeiro 4ª geração", "domain": "Ar",
+      "introduced": "1988", "administration": "reagan", "status": "Em serviço", "class": "Aéreo" },
+    { "id": "ws-f16", "name": "F-16 Fighting Falcon", "type": "Caça multiuso 4ª geração", "domain": "Ar",
+      "introduced": "1978", "administration": "carter", "status": "Em serviço", "class": "Aéreo" },
+    { "id": "ws-f22", "name": "F-22 Raptor", "type": "Caça furtivo 5ª geração", "domain": "Ar",
+      "introduced": "2005", "administration": "bush43", "status": "Em serviço (linha encerrada)", "class": "Aéreo" },
+    { "id": "ws-f35", "name": "F-35 Lightning II", "type": "Caça furtivo 5ª geração (programa conjunto)", "domain": "Ar",
+      "introduced": "2015", "administration": "obama", "status": "Em serviço (escala global)", "class": "Aéreo" },
+    { "id": "ws-b2", "name": "B-2 Spirit", "type": "Bombardeiro estratégico furtivo", "domain": "Ar",
+      "introduced": "1997", "administration": "clinton", "status": "Em serviço", "class": "Estratégico" },
+    { "id": "ws-tomahawk", "name": "BGM-109 Tomahawk", "type": "Cruzeiro de ataque terrestre", "domain": "Mar/Ar",
+      "introduced": "1983", "administration": "reagan", "status": "Em serviço (Block V)", "class": "Marítimo" },
+    { "id": "ws-patriot", "name": "MIM-104 Patriot", "type": "Defesa aérea / antimísseis", "domain": "Terra",
+      "introduced": "1984", "administration": "reagan", "status": "Em serviço (PAC-3)", "class": "Terrestre" },
+    { "id": "ws-himars", "name": "M142 HIMARS", "type": "Lançador de foguetes múltiplo", "domain": "Terra",
+      "introduced": "2005", "administration": "bush43", "status": "Em serviço", "class": "Terrestre" },
+    { "id": "ws-m777", "name": "M777", "type": "Obus rebocado de 155mm", "domain": "Terra",
+      "introduced": "2005", "administration": "bush43", "status": "Em serviço", "class": "Terrestre" },
+    { "id": "ws-minuteman", "name": "LGM-30G Minuteman III", "type": "ICBM (Tríade Nuclear)", "domain": "Terra",
+      "introduced": "1970", "administration": "nixon", "status": "Em serviço → transição Sentinel", "class": "Estratégico" },
+    { "id": "ws-trident2", "name": "UGM-133 Trident II D5", "type": "SLBM (Tríade Nuclear)", "domain": "Mar",
+      "introduced": "1990", "administration": "bush41", "status": "Em serviço", "class": "Estratégico" },
+    { "id": "ws-ussf", "name": "Força Espacial dos EUA (USSF)", "type": "Serviço militar independente", "domain": "Espaço",
+      "introduced": "2019", "administration": "trump", "status": "Ativo", "class": "Espacial" },
+    { "id": "ws-aukus", "name": "AUKUS (SSN para Austrália)", "type": "Aliança de submarinos nucleares", "domain": "Mar",
+      "introduced": "2021", "administration": "biden", "status": "Em implementação", "class": "Marítimo" },
+    { "id": "ws-lrasm", "name": "LRASM / Conventional Prompt Strike", "type": "Arma hipersônica / antimaterial", "domain": "Mar/Ar",
+      "introduced": "2018+", "administration": "trump", "status": "Entrando em serviço", "class": "Marítimo/Avançado" },
+    { "id": "ws-replicator", "name": "Iniciativa Replicator", "type": "Enxames autônomos de baixo custo", "domain": "Ar/Terra/Mar",
+      "introduced": "2023", "administration": "biden", "status": "Em escala", "class": "Autônomo" },
+    { "id": "ws-gps", "name": "GPS / NAVSTAR", "type": "Sistema de posicionamento (dual-use)", "domain": "Espaço",
+      "introduced": "1978+", "administration": "carter-reagan", "status": "Em serviço (civil + militar)", "class": "Espacial/Civil" },
+    { "id": "ws-arpanet-legacy", "name": "ARPANET / Internet (TCP/IP)", "type": "Rede de comando & spin-off civil", "domain": "Cibernético",
+      "introduced": "1969", "administration": "precedente (DoD/ARPA)", "status": "Legado → TCP/IP civil", "class": "Cibernético/Civil" }
+  ],
+
+  "spinoffs": [
+    { "militarySource": "ARPANET (ARPA/DARPA)", "civilOutput": "Internet (protocolo TCP/IP)", "domain": "Redes/Cyber" },
+    { "militarySource": "Programas TRANSIT / NAVSTAR", "civilOutput": "GPS civil (posicionamento global)", "domain": "Espaço/Geolocalização" },
+    { "militarySource": "Microchips p/ computadores de orientação Minuteman", "civilOutput": "Indústria de silício comercial", "domain": "Semicondutores" },
+    { "militarySource": "Medicina de trauma em campo de batalha", "civilOutput": "Atendimento pré-hospitalar / hemostáticos", "domain": "Saúde" },
+    { "militarySource": "Kevlar / Nylon balístico", "civilOutput": "Materiais sintéticos / capacetes / cordas", "domain": "Materiais" },
+    { "militarySource": "DARPA Grand Challenges", "civilOutput": "Sensores de veículos autônomos", "domain": "Mobilidade" }
+  ]
+}

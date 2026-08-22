@@ -1,0 +1,14 @@
+# Logs
+assets/download.log
+
+# Dependências (não usadas no build, mas por segurança)
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Ambiente
+.env
+.env.local
