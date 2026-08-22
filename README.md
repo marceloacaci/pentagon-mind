@@ -48,7 +48,11 @@ Diretriz editorial rígida (ver [`docs/editorial-guidelines.md`](docs/editorial-
 | `politicas-presidenciais.html` | Nexo de Comando Executivo | Matriz Bush 41 → Trump 2 (hard/soft/smart power) |
 | `arsenal-tecnologia.html` | Tecnologia de Defesa | Tríade nuclear, 5ª/6ª geração, hipersônicos, spin-offs DARPA |
 | `impactos-geopoliticos.html` | Geopolítica EUA | Estudos de caso, postura multidomínio |
+| `briefings.html` | Catálogo de Briefings | 9 estudos de caso filtráveis (região/tag/ano) |
+| `article.html?briefing=<id>` | Template de Artigo | Renderiza `content/briefings/<id>.json` (loader estático) |
 | `glossario.html` | Glossário Analítico | 33 siglas EN→PT, popups inline |
+
+> **Briefings:** o catálogo (`briefings.html`) lista estudos de caso reais (Tempestade no Deserto, Enduring Freedom, Iraqi Freedom, Ormuz, Taiwan, Ucrânia–Rússia, Coreia, Cuba, Espacial/Ciber). Cada um abre em `article.html` — template padronizado com lead, corpo, "Em outras palavras", dados técnicos e referências. Conteúdo em `content/briefings/*.json`.
 
 ## Como servir localmente
 
