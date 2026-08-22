@@ -1,0 +1,23 @@
+{
+  "id": "desert-storm",
+  "title": "Operação Tempestade no Deserto (1991)",
+  "date": "1991-02-28",
+  "region": "oriente-medio",
+  "category": "briefing",
+  "tags": ["guerra-do-golfo", "powell", "airland-battle", "csgs"],
+  "lead": "A libertação do Kuwait consolidou a Doutrina Powell: força avassaladora, objetivos claros e estratégia de saída definida, operada sob mandato do Conselho de Segurança da ONU.",
+  "bodyHtml": "<p>A <strong>Operação Tempestade no Deserto</strong> (17 jan–28 fev 1991) encerrou a ocupação iraquiana do Kuwait iniciada em agosto de 1990. Foi a primeira aplicação em escala da <span class=\"term\" data-term=\"AirLand Battle\">AirLand Battle</span> (FM 100-5), combinando superioridade aérea, manobra terrestre em segundo eixo e isolamento do comando iraquiano.</p><h3>Doutrina Powell</h3><p>O então Chair do Joint Chiefs, General <strong>Colin Powell</strong>, codificou o princípio de empregar <em>força avassaladora</em> (overwhelming force) apenas com objetivo político claro, apoio público e <em>estratégia de saída</em>. A campanha aérea (39 dias) precedeu a ofensiva terrestre (100 horas) que expulsou as forças de Saddam Hussein.</p><h3>Projeção e Sustentação</h3><p>O emprego de múltiplos <span class=\"term\" data-term=\"CSG\">CSGs</span> no Golfo Pérsico demonstrou a capacidade de sustentação global (<span class=\"term\" data-term=\"TRANSCOM\">TRANSCOM</span>) e a influência diplomática avançada via presença naval.</p><h3>Impacto Sistêmico</h3><p>O conflito validou a Revolução nos Assuntos Militares (RMA) de precisão e estabeleceu o precedente de coalizão liderada pelos EUA sob mandato da ONU — modelo reutilizado, com resultados mistos, em 2003.</p>",
+  "explain": "Foi a guerra que mostrou o poder dos EUA em agir rápido e com força esmagadora, com apoio de aliados e da ONU, para expulsar um invasor — e depois voltar para casa com um plano de saída.",
+  "data": [
+    { "label": "Fases", "value": "39 dias aéreas + 100h terrestres" },
+    { "label": "Coalizão", "value": "34 nações (Operação Escudo do Deserto)" },
+    { "label": "CSGs no Golfo", "value": "6 Grupos de Combate de Navios-Aeródromos" },
+    { "label": "Baixas EUA", "value": "~294 (combate)" },
+    { "label": "Mandato", "value": "Resolução 678 do CS da ONU" }
+  ],
+  "refs": [
+    "Department of Defense. (1992). <em>Conduct of the Persian Gulf War</em>. Washington, DC: DoD.",
+    "Powell, C. L. (1995). <em>My American Journey</em>. New York: Random House.",
+    "Congressional Research Service. (1991). <em>The Gulf War: A UN-coalition victory</em>. Washington, DC: CRS."
+  ]
+}

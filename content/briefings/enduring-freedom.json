@@ -1,0 +1,22 @@
+{
+  "id": "enduring-freedom",
+  "title": "Operation Enduring Freedom (2001)",
+  "date": "2001-10-07",
+  "region": "asia-central",
+  "category": "briefing",
+  "tags": ["afganistao", "coin", "guerra-ao-terror"],
+  "lead": "Resposta ao 11 de setembro, marcou a transição para a Contrainsurreição (COIN) e a presença terrestre prolongada no Afeganistão sob a Doutrina Bush de guerra global ao terrorismo.",
+  "bodyHtml": "<p>A <strong>Operation Enduring Freedom</strong> iniciou-se em 7 de outubro de 2001, três semanas após os ataques de 11 de setembro. Combinou forças especiais dos EUA, aliados locais (Aliança do Norte) e campanha aérea para derrubar o regime Taleban que abrigava a Al-Qaeda.</p><h3>Da Manobra à COIN</h3><p>O que começou como operação de <span class=\"term\" data-term=\"COIN\">contrainsurreição</span> de baixo custo evoluiu para presença terrestre de duas décadas. O manual <strong>FM 3-24</strong> (Petraeus, 2006) sistematizou a doutrina de estabilização e transferência de responsabilidade.</p><h3>Guerra Remota e Drones</h3><p>A administração Obama subsequente deslocou o emprego para guerra aérea não tripulada e forças por procuração, reduzindo a presença de <em>boots-on-the-ground</em> e o desgaste político doméstico.</p><h3>Impacto</h3><p>O conflito expôs os limites da <span class=\"term\" data-term=\"COIN\">COIN</span> em ambiente tribal e a dificuldade de saída — o retorno das forças em 2021 reabriu o debate sobre objetivos políticos claros (Doutrina Powell).</p>",
+  "explain": "Foi a resposta militar dos EUA ao 11/09: derrubar quem abrigava a Al-Qaeda no Afeganistão e, depois, tentar estabilizar o país por anos — mostrando como guerras de contrainsurreição são difíceis de terminar.",
+  "data": [
+    { "label": "Início", "value": "07/10/2001" },
+    { "label": "Duração da presença", "value": "2001–2021 (20 anos)" },
+    { "label": "Manual-chave", "value": "FM 3-24 (COIN, 2006)" },
+    { "label": "Forças de pico", "value": "~100.000 (2010)" }
+  ],
+  "refs": [
+    "Petraeus, D. et al. (2006). <em>FM 3-24: Counterinsurgency</em>. Department of the Army.",
+    "Congressional Research Service. (2021). <em>Afghanistan: Background and U.S. Policy</em>. Washington, DC: CRS.",
+    "RAND Corporation. (2012). <em>Ending the U.S. War in Afghanistan</em>. Santa Monica: RAND."
+  ]
+}

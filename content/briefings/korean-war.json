@@ -1,0 +1,21 @@
+{
+  "id": "korean-war",
+  "title": "Guerra da Coreia (1950–1953)",
+  "date": "1950-06-25",
+  "region": "asia-oriental",
+  "category": "briefing",
+  "tags": ["guerra-fria", "onu", "truman"],
+  "lead": "Primeiro conflito limitado da Guerra Fria: intervenção sob bandeira da ONU para conter a expansão comunista,固化ndo o padrão de guerra limitada.",
+  "bodyHtml": "<p>A invasão da Coreia do Sul pela Coreia do Norte (25 jun 1950) provocou a primeira resposta coletiva da ONU. Forças dos EUA lideraram a <strong>Força de Defesa da ONU</strong> sob o General MacArthur.</p><h3>Conflito Limitado</h3><p>A entrada chinesa (out/1950) e a decisão de não ampliar para a China continental estabeleceram o princípio de <em>guerra limitada</em> — restrição de objetivo para evitar conflito nuclear com a URSS.</p><h3>Armistício</h3><p>O cessar-fogo de 1953 fixou a Zona Desmilitarizada (DMZ). Técnicamente, as duas Coreias seguem em estado de guerra.</p><h3>Impacto</h3><p>O conflito consolidou o compromisso dos EUA com a contenção na Ásia e a presença permanente no Pacífico Ocidental — base da arquitetura de alianças ainda ativa no <span class=\"term\" data-term=\"GPC\">GPC</span> atual.</p>",
+  "explain": "Foi a primeira grande guerra da Guerra Fria: os EUA lideraram tropas da ONU para defender a Coreia do Sul, mas limitaram o objetivo para não provocar uma guerra nuclear com a URSS — deixando a península dividida até hoje.",
+  "data": [
+    { "label": "Duração", "value": "25/06/1950 – 27/07/1953" },
+    { "label": "Força da ONU", "value": "16 nações" },
+    { "label": "Baixas EUA", "value": "~36.500" },
+    { "label": "Status", "value": "Armistício (sem tratado de paz)" }
+  ],
+  "refs": [
+    "Congressional Research Service. (2023). <em>The Korean War Armistice and Current Tensions</em>. Washington, DC: CRS.",
+    "SIPRI. (2024). <em>SIPRI Yearbook 2024</em>. Oxford: Oxford University Press."
+  ]
+}

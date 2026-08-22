@@ -1,0 +1,22 @@
+{
+  "id": "ukraine-russia",
+  "title": "Guerra Rússia–Ucrânia — Apoio dos EUA",
+  "date": "2022-02-24",
+  "region": "euro-atlantico",
+  "category": "briefing",
+  "tags": ["dissuasao-integrada", "biden", "proxy"],
+  "lead": "Gestão estrutural do conflito via assistência de segurança massiva por procuração (PDA/USAI), âncora da Dissuasão Integrada da administração Biden.",
+  "bodyHtml": "<p>A invasão russa da Ucrânia em 24 de fevereiro de 2022 reativou a segurança europeia e a postura de <span class=\"term\" data-term=\"GPC\">Competição de Grandes Potências</span> contra a Rússia. Os EUA responderam com <em>dissuasão integrada</em> — fusão de capacidades militares, econômicas, cibernéticas e diplomáticas.</p><h3>Apoio por Procuração</h3><p>Via <strong>Presidential Drawdown Authority (PDA)</strong> e <strong>Ukraine Security Assistance Initiative (USAI)</strong>, os EUA transferiram armamentos (HIMARS, Stinger, Abrams, munição de precisão) sem engajar tropas diretas — modelo de guerra por procuração para limitar desgaste político.</p><h3>Redes Aliadas</h3><p>A OTAN absorveu a Suécia e a Finlândia e reforçou a Frente Leste Europeia (Corredor de Suwałki), concretizando a Dissuasão Integrada em teatro.</p><h3>Impacto</h3><p>O conflito testou a sustentação industrial americana e a resiliência das cadeias de munição — lição reincorporada à estratégia de <span class=\"term\" data-term=\"MDO\">Operações Multidomínio</span>.</p>",
+  "explain": "Os EUA ajudam a Ucrânia enviando armas e dinheiro, mas sem enviar soldados para lutar — apoiando um aliado à distância enquanto mantêm a própria dissuasão na Europa e em outras frentes.",
+  "data": [
+    { "label": "Início da invasão", "value": "24/02/2022" },
+    { "label": "Mecanismos", "value": "PDA + USAI" },
+    { "label": "Ajuda (acumulada)", "value": "> US$ 100 bi (até 2024)" },
+    { "label": "OTAN", "value": "Finlândia + Suécia admitidas" }
+  ],
+  "refs": [
+    "Congressional Research Service. (2024). <em>Ukraine: U.S. Assistance and Key Policy Issues</em>. Washington, DC: CRS.",
+    "The White House. (2022). <em>National Security Strategy</em>. Washington, DC.",
+    "RAND Corporation. (2023). <em>Supporting Ukraine: Options for the United States</em>. Santa Monica: RAND."
+  ]
+}

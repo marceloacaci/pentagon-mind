@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PENTAGON-MIND — Catálogo de Briefings</title>
+  <meta name="description" content="Catálogo de briefings analíticos de defesa e geopolítica dos EUA (PENTAGON-MIND)." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-topbar"></div>
+
+  <header class="hero wrap">
+    <p class="eyebrow">// CATÁLOGO DE BRIEFINGS — ANÁLISE ABERTA</p>
+    <h1>Briefings</h1>
+    <p class="lead">
+      Estudos de caso estruturados sobre emprego do poder militar americano, de Guerras Frias a
+      contingências contemporâneas. Filtre por região, tag ou ano. Cada briefing abre em
+      <a href="article.html?briefing=desert-storm">template analítico padronizado</a>.
+    </p>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="filterbar" id="filters">
+        <button class="chip active" data-filter="all">TODOS</button>
+        <button class="chip" data-region="indo-pacifico">INDO-PACÍFICO</button>
+        <button class="chip" data-region="euro-atlantico">EURO-ATLÂNTICO</button>
+        <button class="chip" data-region="oriente-medio">ORIENTE MÉDIO</button>
+        <button class="chip" data-region="asia-central">ÁSIA CENTRAL</button>
+        <button class="chip" data-region="asia-oriental">ÁSIA ORIENTAL</button>
+        <button class="chip" data-region="americas">AMÉRICAS</button>
+        <button class="chip" data-region="global">GLOBAL</button>
+      </div>
+      <div class="filterbar" id="tag-filters"><!-- preenchido por js/briefings.js --></div>
+      <div id="briefing-list" class="grid grid-2"></div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/briefings.js"></script>
+</body>
+</html>

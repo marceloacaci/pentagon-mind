@@ -11,6 +11,7 @@
     { href: "politicas-presidenciais.html", label: "PRESIDÊNCIAS" },
     { href: "arsenal-tecnologia.html", label: "ARSENAL" },
     { href: "impactos-geopoliticos.html", label: "GEOPOLÍTICA" },
+    { href: "briefings.html", label: "BRIEFINGS" },
     { href: "glossario.html", label: "GLOSSÁRIO" }
   ];
 
@@ -57,8 +58,9 @@
           '<a href="politicas-presidenciais.html">Presidências</a>' +
           '<a href="arsenal-tecnologia.html">Arsenal</a>' +
           '<a href="impactos-geopoliticos.html">Geopolítica</a>' +
+          '<a href="briefings.html">Briefings</a>' +
           '<a href="glossario.html">Glossário</a>' +
-        "</div>" +
+        '</div>' +
       "</div>";
   }
 

@@ -1,0 +1,22 @@
+{
+  "id": "taiwan-strait",
+  "title": "Contingência do Estreito de Taiwan",
+  "date": "2022-08-01",
+  "region": "indo-pacifico",
+  "category": "briefing",
+  "tags": ["a2-ad", "gpc", "indo-pacifico", "jadc2"],
+  "lead": "Principal vetor de atenção da Competição de Grandes Potências: dissuasão integrada contra a capacidade A2/AD sino-russa e defesa da autonomia de Taiwan.",
+  "bodyHtml": "<p>O <strong>Estreito de Taiwan</strong> separa a República da China (Taiwan) da República Popular da China (RPC). Para os EUA, a integridade do status quo é central à estabilidade do Indo-Pacífico e às cadeias de semicondutores globais.</p><h3>A2/AD e Dissuasão</h3><p>A RPC desenvolveu capacidade <span class=\"term\" data-term=\"A2/AD\">Anti-Acesso/Negação de Área</span> (mísseis DF-21D, submarinos, satélites antissatélite) para negar projeção americana na Primeira Cadeia de Ilhas. A resposta é <em>dissuasão integrada</em>: redes bilaterais EUA–Japão–Coreia–Filipinas e o AUKUS.</p><h3>Operações Multidomínio</h3><p>O <span class=\"term\" data-term=\"JADC2\">JADC2</span> conecta sensores e atiradores em terra, mar, ar, espaço e ciberespaço para ganhar vantagem contra um adversário de nível quase-igual (<span class=\"term\" data-term=\"GPC\">GPC</span>).</p><h3>Risco de Escalada</h3><p>Exercícios recíprocos e visitas de alto nível elevam o risco de incidente — o escalão de escalada de conflito exige comunicação direta para evitar mal-entendido.</p>",
+  "explain": "Taiwan é o ponto mais tenso entre EUA e China: os EUA mantêm dissuasão para que ninguém use a força para mudar o status da ilha, enquanto a China construiu armas capazes de impedir a chegada de reforços americanos.",
+  "data": [
+    { "label": "Distância", "value": "~130 km no ponto mais estreito" },
+    { "label": "Foco A2/AD", "value": "Primeira Cadeia de Ilhas" },
+    { "label": "Alianças", "value": "EUA–Japão–Coreia–Filipinas; AUKUS" },
+    { "label": "Comando", "value": "INDOPACOM" }
+  ],
+  "refs": [
+    "U.S. Department of Defense. (2022). <em>Military and Security Developments Involving the PRC</em>. Washington, DC: DoD.",
+    "CSIS. (2023). <em>The First Battle of the Next War: Wargaming a Chinese Invasion of Taiwan</em>. Washington, DC: CSIS.",
+    "Congressional Research Service. (2024). <em>China-Taiwan Relations</em>. Washington, DC: CRS."
+  ]
+}

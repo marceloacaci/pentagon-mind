@@ -1,0 +1,21 @@
+{
+  "id": "ormuz",
+  "title": "Estreito de Ormuz — Ponto de Estreito Estratégico",
+  "date": "1980-01-01",
+  "region": "oriente-medio",
+  "category": "briefing",
+  "tags": ["energia", "csgs", "gpc"],
+  "lead": "Gargalo por onde transita ~20% do petróleo mundial; prioridade permanente de garantia de fluxo e de dissuasão de interdição por adversários regionais.",
+  "bodyHtml": "<p>O <strong>Estreito de Ormuz</strong> conecta o Golfo Pérsico ao Oceano Índico e escoa a produção de Arábia Saudita, Irã, Iraque, Kuwait e EAU. Sua interdição afetaria preços energéticos e aliados asiáticos e europeus dos EUA.</p><h3>CSGs como Instrumento</h3><p>Os <span class=\"term\" data-term=\"CSG\">CSGs</span> operam como ferramenta de <em>influência diplomática avançada</em>: a presença contínua sinaliza compromisso e garante liberdade de navegação sob o direito internacional.</p><h3>Competição de Grandes Potências</h3><p>Na postura de <span class=\"term\" data-term=\"GPC\">Competição de Grandes Potências</span>, o estreito é nó crítico de A2/AD regional e foco de exercícios combinados com aliados do CENTCOM.</p><h3>Risco</h3><p>Tensões recorrentes (1980–88 reflagração, 2019 apreensão de navios) mantêm o estreito como vetor de atenção prioritária do briefing.</p>",
+  "explain": "É o canal por onde passa boa parte do petróleo do mundo. Os EUA mantêm navios de guerra por lá para garantir que o tráfego não seja bloqueado — um ponto-chave da estratégia de energia e dissuasão.",
+  "data": [
+    { "label": "Tráfego", "value": "~20% do petróleo mundial" },
+    { "label": "Largura mínima", "value": "~33 km (2 faixas de tráfego)" },
+    { "label": "Comando", "value": "CENTCOM / Fifth Fleet" },
+    { "label": "CSGs recorrentes", "value": "presença rotativa de 1–2 grupos" }
+  ],
+  "refs": [
+    "U.S. Energy Information Administration. (2023). <em>World Oil Transit Chokepoints</em>. Washington, DC: EIA.",
+    "Congressional Research Service. (2020). <em>Iran: U.S. Economic Sanctions and the Joint Comprehensive Plan of Action</em>. Washington, DC: CRS."
+  ]
+}

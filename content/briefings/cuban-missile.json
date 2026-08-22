@@ -1,0 +1,22 @@
+{
+  "id": "cuban-missile",
+  "title": "Crise dos Mísseis de Cuba (1962)",
+  "date": "1962-10-16",
+  "region": "americas",
+  "category": "briefing",
+  "tags": ["guerra-fria", "kennedy", "dissuasao"],
+  "lead": "O episódio de mais alto risco de confronto nuclear EUA–URSS; resolução por bloqueio naval e acordo secreto de retirada de mísseis.",
+  "bodyHtml": "<p>Em outubro de 1962, fotografias de reconhecimento revelaram mísseis soviéticos em construção em Cuba, capazes de atingir território continental americano. A administração Kennedy impôs <em>bloqueio naval (quarentena)</em> e exige retirada.</p><h3>Dissuasão e Comunicação</h3><p>A crise ilustrou a importância de canais diretos (o futuro <em>Hotline</em> Washington–Moscou) e da dissuasão baseada em capacidade e credibilidade.</p><h3>Resolução</h3><p>Acordo público (retirada de mísseis de Cuba) e secreto (retirada de mísseis Jupiter da Turquia). A escalada foi interrompida antes do ponto de não-retorno.</p><h3>Impacto</h3><p>Instituiu o conceito de <em>escalão de escalada</em> e o controle de armas estratégicas (SALT/START) — base da estabilidade da Guerra Fria.</p>",
+  "explain": "Foi o momento mais perto de uma guerra nuclear: os EUA descobriram mísseis soviéticos em Cuba e, após um blecaute naval e negociações secretas, ambos recuaram — nascendo as linhas diretas de comunicação e os tratados de controle de armas.",
+  "data": [
+    { "label": "Duração", "value": "16–28 out 1962 (13 dias)" },
+    { "label": "Resposta", "value": "Bloqueio naval (quarentena)" },
+    { "label": "Acordo", "value": "Retirada de Cuba + Turquia (secreta)" },
+    { "label": "Desdobramento", "value": "Hotline Washington–Moscou (1963)" }
+  ],
+  "refs": [
+    "Kennedy, R. F. (1969). <em>Thirteen Days: A Memoir of the Cuban Missile Crisis</em>. New York: Norton.",
+    "Allison, G. (1971). <em>Essence of Decision</em>. Boston: Little, Brown.",
+    "Congressional Research Service. (2012). <em>Cuban Missile Crisis</em>. Washington, DC: CRS."
+  ]
+}

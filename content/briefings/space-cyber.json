@@ -1,0 +1,22 @@
+{
+  "id": "space-cyber",
+  "title": "Dissuasão Espacial & Cibernética",
+  "date": "2019-12-20",
+  "region": "global",
+  "category": "briefing",
+  "tags": ["ussf", "pqc", "jadc2", "gpc"],
+  "lead": "Criação da Força Espacial e adoção de criptografia pós-quântica (PQC) para proteger redes de comunicações táticas na competição multidomínio.",
+  "bodyHtml": "<p>A <span class=\"term\" data-term=\"USSF\">Força Espacial dos EUA</span> (2019) tornou-se o sexto ramo das Forças Armadas, respondendo à militarização do espaço por China e Rússia (anti-satélites, órbitas baixas).</p><h3>Criptografia Pós-Quântica</h3><p>A <span class=\"term\" data-term=\"PQC\">PQC</span> (NIST FIPS 203/204/205, 2024) migra redes táticas para resistir a computadores quânticos — peça-chave da sobrevivência do <span class=\"term\" data-term=\"JADC2\">JADC2</span> e dos loops sensor-atirador.</p><h3>Domínios do MDO</h3><p>Espaço e ciberespaço são domínios das <span class=\"term\" data-term=\"MDO\">Operações Multidomínio</span>: PNT (posição/navegação/tempo), ISR e C2 dependem de ativos espaciais protegidos.</p><h3>Impacto</h3><p>A dissuasão integrada estende-se agora a domínios sem fronteiras físicas — onde o primeiro golpe pode ser silencioso (cibernético) ou orbital.</p>",
+  "explain": "Os EUA criaram uma Força Espacial e passaram a usar criptografia resistente a computadores quânticos para proteger suas comunicações militares — porque hoje a dissuasão também depende de satélites e da guerra cibernética, não só de tropas e navios.",
+  "data": [
+    { "label": "USSF criada", "value": "20/12/2019 (6º ramo)" },
+    { "label": "PQC", "value": "NIST FIPS 203/204/205 (2024)" },
+    { "label": "Domínios MDO", "value": "Terra · Mar · Ar · Espaço · Ciberespaço" },
+    { "label": "Ameaça", "value": "Anti-satélites sino-russos" }
+  ],
+  "refs": [
+    "U.S. Space Force. (2020). <em>Space Capstone Publication</em>. Washington, DC: USSF.",
+    "NIST. (2024). <em>FIPS 203/204/205 — Post-Quantum Cryptography Standards</em>. Gaithersburg: NIST.",
+    "Congressional Research Service. (2023). <em>Defense Primer: U.S. Space Force</em>. Washington, DC: CRS."
+  ]
+}

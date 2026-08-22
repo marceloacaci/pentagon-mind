@@ -1,0 +1,22 @@
+{
+  "id": "iraqi-freedom",
+  "title": "Operation Iraqi Freedom (2003)",
+  "date": "2003-03-20",
+  "region": "oriente-medio",
+  "category": "briefing",
+  "tags": ["iraque", "bush-43", "guerra-ao-terror", "coin"],
+  "lead": "Invasão do Iraque baseada na Doutrina Bush de ataque preventivo (preemptive strike) e na Estratégia de Segurança Nacional de 2002 — marco do unilateralismo e da sobreextensão estrutural.",
+  "bodyHtml": "<p>A <strong>Operation Iraqi Freedom</strong> começou em 20 de março de 2003 sob a <span class=\"term\" data-term=\"Bush Doctrine\">Doutrina Bush</span> (Estratégia de Segurança Nacional de 2002), que legitimava o ataque preventivo a ameaças em gestação. A justificativa de armas de destruição massiva não se confirmou.</p><h3>Sobreextensão Estrutural</h3><p>A rápida vitória convencional deu lugar a insurreição e guerra civil, exigindo <span class=\"term\" data-term=\"COIN\">COIN</span> em escala e prolongando a presença terrestre — caso de sobreextensão das forças americanas prevista por críticos da Doutrina Powell.</p><h3>Transição</h3><p>O \u201csurge\u201d de 2007 (FM 3-24) reduziu a violência; o acordo SOFA de 2008 fixou a retirada para 2011. O vácuo contribuiu para a ascensão do Estado Islâmico.</p><h3>Impacto Sistêmico</h3><p>O conflito desgastou o capital político e militar dos EUA e reacendeu o debate sobre limites do hard power unilateral.</p>",
+  "explain": "Foi a invasão do Iraque sob a justificativa de ameaça preventiva. A vitória rápida virou anos de guerra interna, mostrando os riscos de entrar sem um plano claro de saída e de sobrecarregar as forças terrestres.",
+  "data": [
+    { "label": "Início", "value": "20/03/2003" },
+    { "label": "Fim da missão de combate", "value": "31/08/2010 (surge até 2007)" },
+    { "label": "Retirada", "value": "2011 (retorno em 2014)" },
+    { "label": "Custo (estimado)", "value": "~US$ 2 trilhões (longo prazo)" }
+  ],
+  "refs": [
+    "The White House. (2002). <em>The National Security Strategy of the United States</em>. Washington, DC.",
+    "Congressional Research Service. (2008). <em>Iraq: Post-Saddam Governance and Security</em>. Washington, DC: CRS.",
+    "Ricks, T. E. (2006). <em>Fiasco: The American Military Adventure in Iraq</em>. New York: Penguin."
+  ]
+}
