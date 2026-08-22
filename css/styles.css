@@ -16,9 +16,10 @@
   --text:          #d7e0ea;
   --text-strong:   #f3f7fb;
   --text-muted:    #8a99ab;
-  --text-faint:    #5d6b7d;
+  --text-faint:    #7e8da0;   /* subido p/ ~4.7:1 sobre --bg (AA) */
 
   --primary:       #2f7fb5;   /* aço / azul do sensor */
+  --primary-deep:  #1f5f8b;   /* azul profundo p/ btn-primary (contraste AA c/ branco) */
   --primary-soft:  rgba(47,127,181,0.15);
   --accent:        #c9a227;   /* âmbar de alerta / sinal */
   --accent-soft:   rgba(201,162,39,0.14);
@@ -388,13 +389,13 @@ footer.site .links a { color: var(--text-muted); font-family: var(--mono); font-
 }
 .btn:hover { border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-hover); }
 .btn-primary {
-  color: #fff; background: linear-gradient(to bottom,
-    color-mix(in srgb, var(--primary) 85%, white) 0%,
-    color-mix(in srgb, var(--primary) 85%, white) 50%,
-    var(--primary) 50%, var(--primary) 100%);
-  border-color: var(--primary); border-top-color: color-mix(in srgb, var(--primary) 70%, white);
+  color: #ffffff; background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--primary-deep) 85%, white) 0%,
+    color-mix(in srgb, var(--primary-deep) 85%, white) 50%,
+    var(--primary-deep) 50%, var(--primary-deep) 100%);
+  border-color: var(--primary-deep); border-top-color: color-mix(in srgb, var(--primary-deep) 70%, white);
 }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); border-color: color-mix(in srgb, var(--primary) 60%, white); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); border-color: color-mix(in srgb, var(--primary-deep) 60%, white); }
 
 /* Botão do menu mobile (hamburguer) — gear-opt */
 .nav-toggle {
@@ -424,3 +425,14 @@ footer.site .links a { color: var(--text-muted); font-family: var(--mono); font-
 .card-link { border-color: rgba(255,255,255,.14); border-radius: var(--radius); }
 /* Ativo mantém borda primary mesmo no escuro */
 .nav-links a.active, .chip.active, .btn-primary { border-color: var(--primary); }
+
+/* ===== Acessibilidade: foco visível (WCAG 2.1 AA) — teclado ===== */
+a:focus-visible, button:focus-visible, .btn:focus-visible, .chip:focus-visible,
+.card-link:focus-visible, .term.has-popup:focus-visible, .pin:focus-visible,
+summary:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+/* Remove outline apenas quando não há foco por teclado (mouse) */
+a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
