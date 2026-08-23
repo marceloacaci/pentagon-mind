@@ -377,6 +377,23 @@ table.data td.k { color: var(--text-strong); font-family: var(--mono); white-spa
 .matrix-row .who .name { font-size: 13.5px; color: var(--text-strong); margin-top: 8px; font-weight: 600; }
 .matrix-row .who .term { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
 .matrix-row .body { padding: 16px; }
+/* Imagem do presidente EXPANDIDA: a LARGURA cresce em proporcao a altura
+   aumentada (pedido). Como o .who e uma coluna estreita de 160px, ao
+   expandir a linha passa a coluna unica, o corpo e ocultado e a figura
+   fica centralizada e maior. :has() e suportado no Chrome alvo. A regra
+   da imagem tem especificidade alta (0,4,1) para vencer .who .pm-img (64x80). */
+.matrix-row:has(.img-zoom.expanded) { grid-template-columns: 1fr; }
+.matrix-row:has(.img-zoom.expanded) .who {
+  border-right: none; display: block; text-align: center;
+}
+.matrix-row:has(.img-zoom.expanded) .body { display: none; }
+.matrix-row .who .img-zoom.expanded {
+  margin: 4px auto 14px; width: min(92vw, 440px);
+}
+.matrix-row .who .img-zoom.expanded img {
+  width: auto; height: clamp(320px, 62vh, 560px);
+  max-width: 100%; object-fit: contain;
+}
 .matrix-row .body h4 { margin-top: 0; }
 
 /* Weapon datasheet */
