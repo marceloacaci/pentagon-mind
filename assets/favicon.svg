@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PENTAGON-MIND">
+  <title>PENTAGON-MIND</title>
+  <rect width="32" height="32" rx="4" fill="#0e1116"/>
+  <path d="M16 4.8 27.2 12.9 22.9 26.1H9.1L4.8 12.9Z" fill="none" stroke="#2f7fb5" stroke-width="2.1"/>
+  <path d="M16 10.4 21.6 14.5 19.4 21.1h-6.8L10.4 14.5Z" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+  <circle cx="16" cy="16" r="1.7" fill="#c9a227"/>
+</svg>
