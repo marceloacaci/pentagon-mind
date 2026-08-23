@@ -76,6 +76,7 @@
     map.querySelectorAll(".pin,.threat-legend").forEach(function (n) { n.remove(); });
     legend.forEach(function (p) {
       var pin = document.createElement("button");
+      pin.type = "button";
       pin.className = "pin " + (p.level === "amber" ? "amber" : "");
       pin.style.left = p.x + "%";
       pin.style.top = p.y + "%";

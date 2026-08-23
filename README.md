@@ -140,7 +140,7 @@ Diagramas Mermaid (`docs/chronogram.md`) renderizam nativamente no GitHub.
 `main` é o **tronco único**, sempre publicável e protegido. Toda alteração entra
 por *branch* de vida curta (**≤ 2 dias**) e *pull request*.
 
-```
+```text
 main ──o───────o───────o──────>  (protegida; deploy automático)
         \     /       /
          o───o       o           feat/*  fix/*  docs/*  content/*
@@ -160,14 +160,14 @@ Regras: sem *commit* direto em `main`; sem *branch* de longa duração; sem
 
 ### 3.2 Padrão de commits — Conventional Commits
 
-```
+```text
 <tipo>(<escopo opcional>): <descrição no imperativo, minúscula, sem ponto final>
 ```
 
 Tipos admitidos: `feat` · `fix` · `docs` · `content` · `style` · `refactor` ·
 `test` · `chore` · `ci`.
 
-```
+```text
 feat(briefings): adiciona filtragem facetada por vetor militar
 content(taiwan): ingere briefing da contingencia do Estreito de Taiwan
 fix(glossary): devolve foco ao termo de origem ao fechar popup com Escape
@@ -199,7 +199,7 @@ Um *pull request* de conteúdo é **rejeitado** se qualquer item falhar:
    passando localmente **antes** de abrir o PR.
 9. **Rodapé de auditoria** preenchido na descrição do PR:
 
-```
+```text
 Fact-check:   [x] 2+ fontes, >=1 primaria US Gov
 Vies:         [x] revisado (quality.md 1.2)
 Bibliografia: [x] formato + links resolviveis
@@ -264,7 +264,7 @@ anteriormente**.
 
 ## 6. Estrutura de Diretórios
 
-```
+```text
 /
 ├── .github/workflows/deploy.yml     pipeline com 6 portões
 ├── README.md

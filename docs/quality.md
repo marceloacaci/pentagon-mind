@@ -70,7 +70,7 @@ Aplicar a **todo** artigo, briefing ou alteração de dado quantitativo.
 
 Um pull request de conteúdo só é aprovado com o rodapé de auditoria preenchido:
 
-```
+```text
 Fact-check: [x] 2+ fontes, >=1 primaria US Gov
 Vies:       [x] revisado (§1.2 integral)
 Bibliografia:[x] formato + links 200

@@ -31,6 +31,7 @@ acessível**, ainda que com corpus de conteúdo mínimo.
 ## 3. Tarefas Técnicas
 
 ### Ambiente e infraestrutura local
+
 - [x] Estrutura de diretórios conforme `docs/architecture.md` §6.
 - [x] Servidor local de desenvolvimento (`assets/serve.cjs`, porta 8726) com
       resolução de caminho segura em Windows (`path.resolve` + verificação de
@@ -40,6 +41,7 @@ acessível**, ainda que com corpus de conteúdo mínimo.
 - [x] `.gitignore` e convenção de commits (Conventional Commits).
 
 ### Design system (contrato visual)
+
 - [x] Tokens de cor: `--bg #14161a`, `--surface #0e1116`,
       `--primary #2f7fb5` (azul-marinho), `--accent #c9a227` (âmbar),
       `--border #3a4049`, texto branco absoluto.
@@ -56,6 +58,7 @@ acessível**, ainda que com corpus de conteúdo mínimo.
 - [x] `prefers-reduced-motion` desabilita transições.
 
 ### Template base do Briefing Central
+
 - [x] `index.html` com estrutura semântica (`header`/`nav`/`main`/`footer`),
       `lang="pt-BR"`, `h1` único.
 - [x] Mapa de vetores de ameaça: pins, popups e legenda dinâmica.
@@ -65,6 +68,7 @@ acessível**, ainda que com corpus de conteúdo mínimo.
       rota ativa executada **após** a montagem do menu.
 
 ### Glossário
+
 - [x] `data/glossary.js` com 33 termos (`full` em inglês, `pt`, `gloss`) +
       tabela de aliases.
 - [x] Engine de popup inline (`js/glossary.js`) com abertura por clique e por
@@ -72,12 +76,14 @@ acessível**, ainda que com corpus de conteúdo mínimo.
 - [x] Página dedicada `glossario.html` renderizando a grade de termos.
 
 ### Acessibilidade e SEO (portões de US-01)
+
 - [x] Link "pular para o conteúdo" como primeiro elemento tabulável.
 - [x] Indicador de foco visível em todos os controles.
 - [x] Contraste medido ≥ 4,5:1 em texto corrido.
 - [x] `meta description`, Open Graph e `link rel="canonical"` no hub.
 
 ### Documentação
+
 - [x] `docs/architecture.md`, `docs/editorial-guidelines.md`.
 - [x] `docs/uml/user-flow.puml`, `component-diagram.puml`, `sitemap.puml`.
 - [x] `assets/wireframes/index-wireframe.puml`.

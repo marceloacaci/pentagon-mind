@@ -1,0 +1,42 @@
+// markdownlint-cli2 — Portao 1 do pipeline.
+//
+// Cada desvio do padrao esta justificado. Regras NAO desativadas por
+// conveniencia: MD022 (linhas em branco em titulos), MD032 (listas),
+// MD040 (linguagem em code fences) e as demais permanecem ATIVAS e foram
+// corrigidas no conteudo.
+{
+  "config": {
+    "default": true,
+
+    // MD013 (line-length): desativada. A documentacao usa tabelas densas de
+    // especificacao (matriz OWASP, taxonomia de Front Matter, nomenclatura DoD)
+    // cujas celulas nao podem ser quebradas sem destruir a tabela. O texto
+    // corrido e mantido em ~80 colunas por convencao editorial, nao por lint.
+    "MD013": false,
+
+    // MD060 (table-column-style): desativada. Exige alinhamento por padding das
+    // celulas; as tabelas aqui usam pipes compactos. E puramente cosmetico e nao
+    // afeta o render do GitHub.
+    "MD060": false,
+
+    // MD025 (single-h1): o `title:` do front matter NAO conta como H1. Os
+    // documentos de `content/` declaram `title` no front matter e repetem o
+    // titulo como H1 no corpo — contrato definido em docs/architecture.md secao 4.
+    "MD025": { "front_matter_title": "" },
+
+    // MD033 (inline HTML): o portal marca siglas com <span class="term">,
+    // traducoes com <span class="quote-translation"> e imagens responsivas com
+    // <picture>. Estes elementos sao parte do contrato de conteudo.
+    "MD033": {
+      "allowed_elements": ["span", "div", "img", "picture", "source", "details", "summary", "br"]
+    },
+
+    // MD024 (duplicate-heading): permitido fora do mesmo nivel irmao. Os
+    // ficheiros de sprint repetem secoes equivalentes ("Riscos da Sprint",
+    // "Definition of Done") sob epicos distintos.
+    "MD024": { "siblings_only": true }
+  },
+
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**", "pagefind/**"]
+}

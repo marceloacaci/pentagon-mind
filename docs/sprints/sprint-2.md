@@ -36,6 +36,7 @@ primária do Governo dos EUA.
 ## 3. Tarefas Técnicas
 
 ### Template de artigo (`article.html`)
+
 - [x] Estrutura canônica: lead · contexto · análise · dados técnicos ·
       "Em outras palavras" · referências.
 - [x] Loader estático resolvendo `?briefing=<id>` contra
@@ -49,6 +50,7 @@ primária do Governo dos EUA.
 - [x] Wireframe de referência em `assets/wireframes/article-wireframe.puml`.
 
 ### Catálogo facetado (`briefings.html`)
+
 - [x] Facetas: `ano` · `vetor_militar` · `administracao_potus` ·
       `regiao_geopolitica` · `doutrina` · `arma`.
 - [x] Composição conjuntiva de facetas; chips ativos removíveis individualmente.
@@ -57,6 +59,7 @@ primária do Governo dos EUA.
 - [x] `aria-pressed` nos controles de faceta; operação integral por teclado.
 
 ### Contrato de conteúdo
+
 - [x] `content/_template.md` como contrato de Front Matter.
 - [x] Enums de taxonomia fixados em `docs/architecture.md` §4.
 - [x] `content/briefings/index.json` como índice e allow-list única.
@@ -84,6 +87,7 @@ primária do Governo dos EUA.
       entradas que ainda dependem apenas de URL.
 
 ### Ontologia e referências cruzadas
+
 - [x] `data/ontology.json`: 7 administrações, 11 conflitos, 20 sistemas de armas.
 - [x] `trump` (2017–2021) e `trump2` (2025–2029) como administrações **distintas**.
 - [x] Seção de correlações no artigo, com links internos resolvíveis.

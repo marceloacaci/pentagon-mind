@@ -37,7 +37,7 @@ ou necessidade de taxonomias geradas automaticamente. O front matter definido na
 
 Modelo de exposição de uma aplicação dinâmica:
 
-```
+```text
 Superfície = S(servidor de aplicação) + S(banco de dados) + S(camada de auth)
            + S(dependências de runtime) + S(entrada do usuário)
 ```
@@ -53,7 +53,7 @@ privilégio de aplicação.
 
 Latência percebida de um documento estático em borda:
 
-```
+```text
 TTFB = RTT_cliente→PoP + t_cache_hit        (t_cache_hit ≈ 1–5 ms)
 ```
 
@@ -76,7 +76,7 @@ reduz-se a: domínio (opcional) + tempo editorial humano.
 
 ## 3. Fluxo de Dados em Tempo de Build e em Runtime
 
-```
+```text
 Autoria (Markdown/JSON)  →  Camada de Dados  →  Loader cliente  →  DOM final
 content/briefings/*.json     data/*.js/json      js/*.js           HTML renderizado
 content/analysis/*.md        assets/img/*        (fetch local)
@@ -111,10 +111,12 @@ referencias_min: 2                                  # invariante de fact-check
 ```
 
 ### 4.1 `vetor_militar` (enum fechado)
+
 `terrestre` · `naval` · `aereo` · `nuclear` · `espacial` · `ciber` ·
 `irregular` · `logistico` · `c2` (comando e controle)
 
 ### 4.2 `administracao_potus` (enum fechado, cronológico)
+
 `truman` · `eisenhower` · `kennedy` · `johnson` · `nixon` · `ford` · `carter` ·
 `reagan` · `bush41` · `clinton` · `bush43` · `obama` · `trump` (2017–2021) ·
 `biden` · `trump2` (2025–2029)
@@ -124,15 +126,18 @@ referencias_min: 2                                  # invariante de fact-check
 > objeto de análise.
 
 ### 4.3 `regiao_geopolitica` (enum fechado)
+
 `indo-pacifico` · `euro-atlantico` · `oriente-medio` · `asia-central` ·
 `asia-oriental` · `africa` · `americas` · `artico` · `global`
 
 ### 4.4 `arma` — regra de nomenclatura
+
 Designação oficial DoD/MDS completa, sem apelido isolado:
 `LGM-30G Minuteman III`, `F-35A Lightning II`, `M142 HIMARS`,
 `UGM-133A Trident II D5`. Proibido: "Minuteman 3", "caça furtivo".
 
 ### 4.5 `doutrina` (enum extensível, curado)
+
 `desgaste-industrial` · `dissuasao-massiva` · `resposta-flexivel` ·
 `airland-battle` · `doutrina-powell` · `coin` · `guerra-ao-terror` ·
 `rebalanceamento-asia` · `gpc` (Great Power Competition) · `mdo` ·
@@ -155,7 +160,7 @@ A cardinalidade combinatória é resolvida no cliente sobre
 
 Política-alvo (self-only, sem `unsafe-inline`, sem CDN de terceiros):
 
-```
+```http
 Content-Security-Policy:
   default-src 'none';
   script-src  'self';
@@ -176,7 +181,7 @@ delegação de evento — padrão já adotado por `js/common.js`.
 
 ### 5.2 Headers HTTP complementares
 
-```
+```http
 Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 X-Content-Type-Options: nosniff
 Referrer-Policy: no-referrer
@@ -211,7 +216,7 @@ são portões de revisão obrigatórios no checklist de code review
 
 ## 6. Sitemap Lógico
 
-```
+```text
 PENTAGON-MIND (index.html — Briefing Central)
 ├── Doutrina Militar ............. doutrina.html        (passado · presente · futuro)
 ├── Políticas Presidenciais ...... politicas-presidenciais.html (Bush→Obama→Trump→Biden→Trump2)

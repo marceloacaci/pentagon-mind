@@ -25,6 +25,7 @@ Estimativa em pontos de história (Fibonacci). Capacidade de referência:
 ## E1 — Fundação Estática e Design System
 
 ### US-01 — Briefing central de entrada
+
 **Como** analista de inteligência, **quero** uma página de entrada que consolide
 os vetores de ameaça ativos e os índices de capacidade, **para** obter situação
 geral em menos de 30 segundos, sem navegar.
@@ -59,6 +60,7 @@ Funcionalidade: Briefing central de inteligencia
 ```
 
 ### US-02 — Design system sóbrio e legível
+
 **Como** acadêmico de Relações Internacionais, **quero** tipografia e paleta
 calibradas para leitura longa, **para** sustentar sessões de estudo prolongadas
 sem fadiga visual.
@@ -89,6 +91,7 @@ Funcionalidade: Design system institucional sobrio
 ```
 
 ### US-03 — Navegação hierárquica consistente
+
 **Como** historiador militar, **quero** navegação idêntica em todas as páginas,
 **para** localizar a seção de doutrina sem reaprender a interface.
 
@@ -112,6 +115,7 @@ Funcionalidade: Navegacao DRY com indicacao de rota ativa
 ```
 
 ### US-04 — Glossário de siglas técnicas
+
 **Como** analista, **quero** resolver uma sigla do DoD sem sair da página,
 **para** não perder o contexto de leitura.
 
@@ -140,6 +144,7 @@ Funcionalidade: Resolucao de siglas por popup inline
 ## E2 — Template de Análise Profunda e Ingestão
 
 ### US-05 — Filtragem de briefings por vetor militar
+
 **Como** analista de inteligência, **quero** filtrar briefings por classe de
 vetor militar, **para** acelerar a produção dos meus relatórios estratégicos.
 
@@ -176,6 +181,7 @@ Funcionalidade: Filtragem facetada do catalogo de briefings
 ```
 
 ### US-06 — Template padronizado de artigo
+
 **Como** acadêmico, **quero** que toda análise siga a mesma estrutura, **para**
 comparar briefings e localizar as referências sempre no mesmo lugar.
 
@@ -206,6 +212,7 @@ Funcionalidade: Template canonico de artigo analitico
 ```
 
 ### US-07 — Ingestão de 5 a 10 briefings piloto verificados
+
 **Como** analista de defesa, **quero** um corpus inicial com dados históricos
 reais e citações verificadas, **para** confiar no portal como fonte de trabalho.
 
@@ -235,6 +242,7 @@ Funcionalidade: Corpus piloto com rastreabilidade de fonte
 ```
 
 ### US-08 — Referências cruzadas por ontologia
+
 **Como** pesquisador, **quero** navegar de um conflito para a administração e o
 sistema de armas associados, **para** reconstruir o encadeamento causal.
 
@@ -256,6 +264,7 @@ Funcionalidade: Referencias cruzadas via ontologia
 ## E3 — Busca Estática, SEO Técnico e Deploy
 
 ### US-09 — Busca textual local sem backend
+
 **Como** analista, **quero** buscar por designação de arma ou operação em todo o
 portal, **para** localizar a passagem relevante sem varrer as páginas.
 
@@ -284,6 +293,7 @@ Funcionalidade: Busca estatica local
 ```
 
 ### US-10 — SEO técnico e indexabilidade
+
 **Como** Product Owner, **quero** que o portal seja corretamente indexado,
 **para** que analistas o encontrem por busca orgânica.
 
@@ -306,6 +316,7 @@ Funcionalidade: SEO tecnico do portal
 ```
 
 ### US-11 — Deploy automatizado com portões de qualidade
+
 **Como** mantenedor, **quero** que apenas conteúdo aprovado seja publicado,
 **para** que um erro editorial não alcance a audiência.
 

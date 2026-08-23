@@ -28,7 +28,7 @@
           '<span class="glyph">PM</span>' +
           '<span>PENTAGON-MIND<small>DOUTRINA · TECNOLOGIA · GEOPOLÍTICA</small></span>' +
         "</a>" +
-        '<button class="nav-toggle" aria-label="Menu">≡</button>' +
+        '<button type="button" class="nav-toggle" aria-label="Menu">≡</button>' +
         '<nav class="nav-links">' + links + "</nav>" +
       "</div>";
     // Mark active link now that nav exists
