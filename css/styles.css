@@ -219,7 +219,7 @@ main { display: block; padding-bottom: 80px; }
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 0 var(--border), 0 6px 18px rgba(0,0,0,.35);
 }
-.topbar-inner { max-width: var(--maxw); margin: 0 auto; height: 100%; display: flex; align-items: center; gap: 24px; padding: 0 24px; }
+.topbar-inner { max-width: var(--maxw); margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 0 24px; }
 /* Marca/titulo: flex-shrink:0 + nowrap garante que "PENTAGON-MIND" e a
    tagline "DOUTRINA · TECNOLOGIA · GEOPOLÍTICA" nunca sejam cortadas ou
    quebrem linha; o header cresce (--navh) para acomodar o titulo maior. */
@@ -231,7 +231,7 @@ main { display: block; padding-bottom: 80px; }
   color: var(--accent); font-family: var(--mono); font-size: 15px;
 }
 .brand small { display:block; font-family: var(--mono); font-size: 11px; letter-spacing:.14em; color: var(--text-faint); font-weight: 500; white-space: nowrap; }
-.nav-links { display: flex; gap: 6px; margin-left: auto; align-items: center; }
+.nav-links { display: flex; gap: 6px; margin-left: 0; align-items: center; }
 .nav-links a {
   color: var(--text-muted); font-size: 13.5px; padding: 10px 18px; border-radius: var(--radius);
   font-family: var(--mono); letter-spacing: .02em; border: 1px solid transparent;
