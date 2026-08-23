@@ -52,7 +52,7 @@
     }
 
     if (d.refs && d.refs.length) {
-      h += '<section class="section"><h2>Referências</h2><ol class="refs">';
+      h += '<section class="section" id="referencias"><h2>Referências Bibliográficas</h2><ol class="refs">';
       d.refs.forEach(function (r) { h += "<li>" + esc(r) + "</li>"; });
       h += "</ol></section>";
     }

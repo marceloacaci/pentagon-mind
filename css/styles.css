@@ -184,6 +184,26 @@ main { display: block; padding-bottom: 80px; }
 /* Image figure */
 figure.media { margin: 0; }
 figure.media img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: var(--radius); background:#0a0e14; }
+
+/* Imagens operacionais (.pm-img) — a classe era usada em 22 pontos de 3 páginas
+   mas NUNCA tinha regra CSS: renderizavam no tamanho natural (até 1280px de
+   largura dentro de um card de 553px, transbordando 727px) e com alturas de
+   300 a 853px na mesma grade. Contida a caixa e uniformizada a proporção.
+   Regras com maior especificidade (ex.: .who .pm-img, 64x80 com object-fit:cover)
+   continuam a vencer — por isso os avatares presidenciais não são afetados. */
+img.pm-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #0a0e14;
+}
+/* Dentro de figure.media a altura é livre (a legenda dá o contexto). */
+figure.media img.pm-img { height: auto; }
 figure.media figcaption {
   font-family: var(--mono); font-size: 11.5px; color: var(--text-faint);
   margin-top: 7px; line-height: 1.45; border-left: 1px solid var(--border-strong); padding-left: 9px;

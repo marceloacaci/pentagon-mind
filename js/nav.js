@@ -9,8 +9,11 @@
     { href: "index.html", label: "BRIEFING" },
     { href: "doutrina.html", label: "DOUTRINA" },
     { href: "politicas-presidenciais.html", label: "PRESIDÊNCIAS" },
+    { href: "topicos-presidenciaveis.html", label: "TÓPICOS ELEITORAIS" },
+    { href: "otan.html", label: "OTAN" },
     { href: "arsenal-tecnologia.html", label: "ARSENAL" },
     { href: "impactos-geopoliticos.html", label: "GEOPOLÍTICA" },
+    { href: "dominios-estrategicos.html", label: "NÃO-CINÉTICO" },
     { href: "briefings.html", label: "BRIEFINGS" },
     { href: "glossario.html", label: "GLOSSÁRIO" }
   ];
