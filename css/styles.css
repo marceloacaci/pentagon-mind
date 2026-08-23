@@ -41,6 +41,16 @@
   --raised-grad: linear-gradient(to bottom,
     var(--raised-grad-top) 0%,
     var(--bg) 100%);
+  /* Estado ativo: mesmo relevo suave, derivado de --primary-deep. NÃO usar --primary
+     puro na base: o texto --text-strong sobre #2f7fb5 mede 4.04:1, abaixo do mínimo
+     AA de 4.5:1 (medido, não estimado). --primary-deep (#1f5f8b) resolve. */
+  --raised-grad-active: linear-gradient(to bottom,
+    color-mix(in srgb, var(--primary) 72%, white) 0%,
+    var(--primary-deep) 100%);
+  /* Superfície de card (--surface) para cards de conteúdo do catálogo. */
+  --raised-surface-grad: linear-gradient(to bottom,
+    color-mix(in srgb, var(--surface) 85%, white) 0%,
+    var(--surface) 100%);
   --shadow:        0 1px 3px rgba(0,0,0,.35), 0 1px 2px rgba(0,0,0,.25);
   /* Tema escuro: sombra de hover BRANCA difusa (a preta some sobre fundo escuro) — MeuBolso §22 */
   --shadow-hover:  0 4px 14px rgba(255,255,255,.10), 0 2px 6px rgba(0,0,0,.40);
@@ -150,6 +160,23 @@ main { display: block; padding-bottom: 80px; }
 }
 .card h3 { margin-top: 0; }
 .card .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; }
+
+/* Cards do catálogo de briefings (gerados por js/briefings.js como .card-link puro,
+   sem .card): recebem a MESMA superfície relevada suave. Base --surface porque são
+   cards de conteúdo sobre --bg. `:not(.card)` evita dupla declaração nos módulos do
+   index.html, que já usam `.card .card-link` e herdam --raised-grad da regra acima. */
+.card-link:not(.card) {
+  display: block;
+  background: var(--raised-surface-grad);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color .15s, box-shadow .15s, transform .15s, background .15s;
+}
+.card-link:not(.card) h3 { margin-top: 6px; }
 /* Hover estilo MeuBolso: SÓ lift + sombra (nunca trocar cor da fonte) */
 .card-link:hover,
 .card:hover { transform: translateY(-2px); border-color: var(--border-strong); box-shadow: var(--shadow-hover); }
@@ -209,13 +236,14 @@ table.data td.k { color: var(--text-strong); font-family: var(--mono); white-spa
 .split > div { padding: 18px; }
 .split .lft { border-right: 1px solid var(--border); background: var(--surface); }
 .split h3 { margin-top: 4px; }
-.pill { display:inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border-strong); color: var(--text-muted); margin: 2px 4px 2px 0; background: var(--bg); box-shadow: var(--shadow); }
+.pill { display:inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border-strong); color: var(--text-muted); margin: 2px 4px 2px 0; background: var(--raised-grad); box-shadow: var(--shadow); }
 
 /* Filter / matrix — padrão gear-opt (MeuBolso) */
 .filterbar { display:flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
-.chip { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg); color: var(--text-muted); cursor: pointer; box-shadow: var(--shadow); transition: border-color .15s, box-shadow .15s, transform .15s, color .15s; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--raised-grad); color: var(--text-muted); cursor: pointer; box-shadow: var(--shadow); transition: border-color .15s, box-shadow .15s, transform .15s, color .15s; }
 .chip:hover { border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-hover); }
-.chip.active { background: var(--primary-soft); color: var(--text-strong); border-color: var(--primary); }
+/* Chip ativo: mesmo relevo, derivado de --primary (metade clara 60% + base sólida) — MeuBolso .gear-opt.active */
+.chip.active { background: var(--raised-grad-active); color: var(--text-strong); border-color: var(--primary); }
 
 /* President matrix rows */
 .matrix-row { display:grid; grid-template-columns: 160px 1fr; gap: 0; border-top: 1px solid var(--border); }
