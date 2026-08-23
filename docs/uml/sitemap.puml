@@ -1,37 +1,105 @@
-@startuml
-title PENTAGON-MIND — Sitemap (Mapa do Site)
+@startuml sitemap
+title PENTAGON-MIND — Mapa do Site (Arvore de Navegacao)
 
 skinparam backgroundColor #14161a
-skinparam defaultTextColor #ffffff
-skinparam node {
-  BackgroundColor #0e1116
-  BorderColor #3a4049
-  FontColor #ffffff
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontColor #ffffff
+skinparam ArrowColor #c9a227
+skinparam shadowing false
+skinparam RectangleBackgroundColor #10141a
+skinparam RectangleBorderColor #2f7fb5
+skinparam RectangleFontColor #ffffff
+skinparam NodeBackgroundColor #0e1116
+skinparam NodeBorderColor #3a4049
+skinparam NodeFontColor #ffffff
+skinparam NoteBackgroundColor #1b1f26
+skinparam NoteBorderColor #3a4049
+skinparam NoteFontColor #ffffff
+
+node "index.html\nBriefing Central de Inteligencia" as ROOT
+
+rectangle "Doutrina Militar\ndoutrina.html" as DTR {
+  node "Passado\ndesgaste industrial\ndissuasao massiva\nresposta flexivel" as DTR_PAST
+  node "Presente\nAirLand Battle\nDoutrina Powell\nCOIN / GWOT" as DTR_NOW
+  node "Futuro\nGPC\nMDO / JADC2\ndissuasao integrada" as DTR_NEXT
 }
-skinparam arrowColor #c9a227
 
-rectangle "PENTAGON-MIND" as ROOT {
-  node "index.html\nBriefing de Inteligência" as IDX
-  node "Doutrina Militar" as DTR
-  node "Tecnologia de Defesa" as ARS
-  node "Geopolítica EUA" as GEO
-  node "Nexo Executivo\n(Presidências)" as POL
-  node "Glossário Analítico" as GLO
+rectangle "Politicas Presidenciais\npoliticas-presidenciais.html" as POL {
+  node "Bush 41 e Clinton\n1989-2001\nnova ordem mundial" as POL_B41
+  node "Bush 43\n2001-2009\nataque preventivo" as POL_B43
+  node "Obama\n2009-2017\nrebalanceamento Asia" as POL_OBA
+  node "Trump 1\n2017-2021\ncompeticao de grandes potencias" as POL_TR1
+  node "Biden\n2021-2025\ndissuasao integrada" as POL_BID
+  node "Trump 2\n2025-2029\nadministracao distinta" as POL_TR2
 }
 
-IDX --> DTR : categoria-mãe
-IDX --> ARS : categoria-mãe
-IDX --> GEO : categoria-mãe
-IDX --> POL : categoria-mãe
-IDX --> GLO : utilitário transversal
-DTR --> GLO
-ARS --> GLO
-GEO --> GLO
-POL --> GLO
+rectangle "Arsenal Tecnologico\narsenal-tecnologia.html" as ARS {
+  node "Triade Nuclear\nLGM-30G Minuteman III\nUGM-133A Trident II D5\nB-52H / B-2A / B-21" as ARS_NUC
+  node "Poder Aereo\nF-22A Raptor\nF-35A Lightning II\nNGAD" as ARS_AIR
+  node "Poder Naval\nCSG Nimitz / Ford\nSSN Virginia\nDDG Zumwalt" as ARS_NAV
+  node "Dominios Emergentes\nhipersonicos\narmas de energia dirigida\nenxames autonomos\nespacial e ciber" as ARS_EMG
+  node "Spin-offs DARPA\nARPANET / GPS\ncriptografia pos-quantica" as ARS_DAR
+}
 
-note bottom of GLO
-  Glossário resolve siglas em todas as seções
-  via popups inline (js/glossary.js)
+rectangle "Analise Aplicada" as ANA {
+  node "Impactos Geopoliticos\nimpactos-geopoliticos.html" as ANA_GEO
+  node "Catalogo de Briefings\nbriefings.html\nfiltragem facetada" as ANA_CAT
+  node "Template de Artigo\narticle.html?briefing=<id>" as ANA_ART
+}
+
+node "Glossario Analitico\nglossario.html\n33 siglas EN / pt / glosa" as GLO
+
+node "Infraestrutura de Indexacao\nsitemap.xml · robots.txt\npagefind/ (busca estatica)" as SEO
+
+ROOT --> DTR
+ROOT --> POL
+ROOT --> ARS
+ROOT --> ANA
+ROOT --> GLO
+
+DTR --> DTR_PAST
+DTR --> DTR_NOW
+DTR --> DTR_NEXT
+
+POL --> POL_B41
+POL --> POL_B43
+POL --> POL_OBA
+POL --> POL_TR1
+POL --> POL_BID
+POL --> POL_TR2
+
+ARS --> ARS_NUC
+ARS --> ARS_AIR
+ARS --> ARS_NAV
+ARS --> ARS_EMG
+ARS --> ARS_DAR
+
+ANA --> ANA_GEO
+ANA --> ANA_CAT
+ANA_CAT --> ANA_ART
+
+DTR_NEXT ..> ANA_CAT : referencia cruzada
+POL_TR2  ..> ANA_CAT : referencia cruzada
+ARS_EMG  ..> ANA_CAT : referencia cruzada
+
+DTR ..> GLO
+POL ..> GLO
+ARS ..> GLO
+ANA ..> GLO
+
+ROOT ..> SEO
+
+note right of GLO
+  Utilitario transversal: resolve siglas
+  em todas as secoes por popup inline
+  (js/glossary.js sobre data/glossary.js).
+end note
+
+note bottom of ANA_ART
+  Rota parametrizada, nao arquivo por artigo.
+  O <id> e validado contra allow-list de
+  content/briefings/index.json (mitigacao
+  de DOM XSS — OWASP A03).
 end note
 
 @enduml

@@ -12,3 +12,8 @@ Thumbs.db
 # Ambiente
 .env
 .env.local
+
+# Artefatos de build (gerados pelo pipeline, nunca versionados)
+pagefind/
+docs/uml/*.png
+docs/uml/*.svg

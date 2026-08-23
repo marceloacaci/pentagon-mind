@@ -1,7 +1,14 @@
 name: deploy-static
 
+# Pipeline de publicacao com portoes bloqueantes.
+# Ordem: lint Markdown -> validacao HTML -> links quebrados -> verify estrutural
+#        -> indice de busca -> deploy.
+# Qualquer falha impede o deploy e preserva a versao publicada anteriormente.
+
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -14,33 +21,116 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  NODE_VERSION: '20'
+
 jobs:
-  verify:
+  # ---------------------------------------------------------------- PORTAO 1
+  lint-markdown:
+    name: 'Portao 1 - Lint de Markdown'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Verify site integrity
-        run: node assets/verify.js
+          node-version: ${{ env.NODE_VERSION }}
 
-  build:
-    needs: verify
+      - name: Lint de Markdown (docs e content)
+        run: npx --yes markdownlint-cli2 "**/*.md" "#node_modules"
+
+  # ---------------------------------------------------------------- PORTAO 2
+  lint-html:
+    name: 'Portao 2 - Validacao semantica de HTML'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Upload Pages artifact
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Validacao de HTML
+        run: npx --yes html-validate "*.html"
+
+  # ---------------------------------------------------------------- PORTAO 3
+  check-links:
+    name: 'Portao 3 - Verificacao de links quebrados'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificacao de links (internos e externos)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 2
+            --timeout 20
+            --accept 200,206,301,302,403,429
+            --exclude-path node_modules
+            "**/*.html"
+            "**/*.md"
+          fail: true
+
+  # ---------------------------------------------------------------- PORTAO 4
+  verify:
+    name: 'Portao 4 - Verificacao estrutural do portal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Sintaxe de todos os scripts
+        run: |
+          set -e
+          for f in $(find js data assets -name '*.js' -not -path '*/node_modules/*'); do
+            node --check "$f"
+          done
+
+      - name: Integridade estrutural (assets/verify.js)
+        run: node assets/verify.js
+
+      - name: Contrato de Front Matter dos briefings
+        run: node assets/check_frontmatter.js
+
+  # ------------------------------------------------------------------- BUILD
+  build:
+    name: 'Build do artefato estatico e indice de busca'
+    needs: [lint-markdown, lint-html, check-links, verify]
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Portao 5 - Indice de busca estatica (Pagefind)
+        run: npx --yes pagefind --site . --output-path pagefind
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empacotar artefato estatico
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
+  # ------------------------------------------------------------------ DEPLOY
   deploy:
+    name: 'Deploy para GitHub Pages'
     needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Publicar
+        id: deployment
         uses: actions/deploy-pages@v4

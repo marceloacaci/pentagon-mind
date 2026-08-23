@@ -1,37 +1,93 @@
-@startuml
-title PENTAGON-MIND — Fluxo de Usuário (Analista)
+@startuml user-flow
+title PENTAGON-MIND — Fluxo do Analista de Defesa
 
 skinparam backgroundColor #14161a
-skinparam defaultTextColor #ffffff
-skinparam activity {
-  BackgroundColor #0e1116
-  BorderColor #3a4049
-  FontColor #ffffff
-}
-skinparam arrowColor #c9a227
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontColor #ffffff
+skinparam ArrowColor #c9a227
+skinparam ActivityBackgroundColor #0e1116
+skinparam ActivityBorderColor #3a4049
+skinparam ActivityFontColor #ffffff
+skinparam ActivityDiamondBackgroundColor #0e1116
+skinparam ActivityDiamondBorderColor #c9a227
+skinparam ActivityDiamondFontColor #ffffff
+skinparam NoteBackgroundColor #1b1f26
+skinparam NoteBorderColor #3a4049
+skinparam NoteFontColor #ffffff
 
 start
-:Analista acessa index.html (Briefing de Inteligência);
-:Explora mapa de vetores de ameaça + índices de capacidade;
 
-if (Foco de interesse?) then
-  -> Doutrina Militar :
-  :doutrina.html (MDO/JADC2, GPC, COIN);
-elseif (Tecnologia?) then
-  -> Tecnologia de Defesa :
-  :arsenal-tecnologia.html (tríade, F-35, hipersônicos);
-elseif (Geopolítica?) then
-  -> Geopolítica EUA :
-  :impactos-geopoliticos.html (estudos de caso);
-elseif (Presidência?) then
-  -> Nexo Executivo :
-  :politicas-presidenciais.html (matriz Bush→Trump);
+:Analista acessa index.html\n(Briefing de Inteligencia);
+:Le indices de capacidade e\nmapa de vetores de ameaca;
+
+if (Intencao de navegacao?) then (Briefing especifico)
+
+  :Abre briefings.html\n(catalogo);
+  :Aplica filtros de taxonomia;
+
+  note right
+    Facetas derivadas do Front Matter:
+    ano x vetor_militar x administracao_potus
+    x regiao_geopolitica x doutrina x arma
+    Filtragem O(n) no cliente sobre
+    content/briefings/index.json
+  end note
+
+  if (Resultado suficiente?) then (nao)
+    :Relaxa criterio de filtro;
+    :Reordena por ano ou regiao;
+  else (sim)
+  endif
+
+  :Seleciona briefing;
+  :article.html?briefing=<id>;
+  :Loader valida <id> contra allow-list\ndo index.json;
+  :Le lead, corpo analitico e\nficha de dados tecnicos;
+
+elseif (Doutrina) then (tematico)
+  :doutrina.html;
+  :Percorre eixo temporal\ndesgaste -> COIN -> GPC -> MDO/JADC2;
+
+elseif (Tecnologia) then (tematico)
+  :arsenal-tecnologia.html;
+  :Consulta triade nuclear, 5a/6a geracao,\nhipersonicos e armas de energia dirigida;
+
+elseif (Geopolitica) then (tematico)
+  :impactos-geopoliticos.html;
+  :Analisa estudos de caso e\nescalada multidominio;
+
+else (Politicas presidenciais)
+  :politicas-presidenciais.html;
+  :Compara matriz Bush 41 -> Trump 2;
 endif
 
-:Encontra sigla destacada (span.term);
-:Popups inline abrem (js/glossary.js) OU abre glossario.html;
-:Consulta Referências (CRS/DoD/SIPRI);
-:Conclui análise;
+:Encontra sigla tecnica marcada\n(span.term);
+
+if (Termo conhecido?) then (nao)
+  :Abre popup inline\n(js/glossary.js);
+  if (Precisa desambiguar?) then (sim)
+    :glossario.html\n(33 termos EN/pt/glosa);
+  else (nao)
+  endif
+else (sim)
+endif
+
+:Consulta bloco Referencias\n(DoD JP / CRS / RAND / SIPRI);
+
+if (Fonte primaria verificavel?) then (nao)
+  #b04a3a:Abre issue de fact-check\nno repositorio;
+  note right
+    Portao de qualidade: afirmacao sem
+    fonte primaria e defeito reportavel.
+    Ver docs/quality.md secao 1.
+  end note
+  stop
+else (sim)
+endif
+
+:Exporta citacao formatada\n(Chicago / APA);
+:Incorpora achado ao\nrelatorio proprio;
+
 stop
 
 @enduml
