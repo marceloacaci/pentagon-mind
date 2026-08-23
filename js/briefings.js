@@ -26,9 +26,9 @@
     var tags = {};
     DATA.forEach(function (d) { (d.tags || []).forEach(function (t) { tags[t] = (tags[t] || 0) + 1; }); });
     var host = document.getElementById("tag-filters");
-    var html = '<button class="chip active" data-tag="all">TODAS AS TAGS</button>';
+    var html = '<button type="button" class="chip active" data-tag="all">TODAS AS TAGS</button>';
     Object.keys(tags).sort().forEach(function (t) {
-      html += '<button class="chip" data-tag="' + esc(t) + '">' + esc(t) + " (" + tags[t] + ")</button>";
+      html += '<button type="button" class="chip" data-tag="' + esc(t) + '">' + esc(t) + " (" + tags[t] + ")</button>";
     });
     host.innerHTML = html;
     host.querySelectorAll(".chip").forEach(function (b) {

@@ -1,59 +1,124 @@
-@startuml
-title PENTAGON-MIND — Diagrama de Componentes (Estático)
+@startuml component-diagram
+title PENTAGON-MIND — Componentes Estaticos (Tempo de Build x Runtime)
 
 skinparam backgroundColor #14161a
-skinparam defaultTextColor #ffffff
-skinparam component {
-  BackgroundColor #0e1116
-  BorderColor #3a4049
-  FontColor #ffffff
-}
-skinparam arrowColor #c9a227
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontColor #ffffff
+skinparam ArrowColor #c9a227
+skinparam shadowing false
+skinparam ComponentBackgroundColor #0e1116
+skinparam ComponentBorderColor #3a4049
+skinparam ComponentFontColor #ffffff
+skinparam DatabaseBackgroundColor #0e1116
+skinparam DatabaseBorderColor #3a4049
+skinparam DatabaseFontColor #ffffff
+skinparam ArtifactBackgroundColor #0e1116
+skinparam ArtifactBorderColor #3a4049
+skinparam ArtifactFontColor #ffffff
+skinparam CloudBackgroundColor #10141a
+skinparam CloudBorderColor #2f7fb5
+skinparam CloudFontColor #ffffff
+skinparam PackageBackgroundColor #10141a
+skinparam PackageBorderColor #2f7fb5
+skinparam PackageFontColor #ffffff
+skinparam NoteBackgroundColor #1b1f26
+skinparam NoteBorderColor #3a4049
+skinparam NoteFontColor #ffffff
 
-package "Conteúdo (HTML)" {
-  [index.html] as IDX
-  [doutrina.html] as DTR
-  [arsenal-tecnologia.html] as ARS
-  [impactos-geopoliticos.html] as GEO
-  [politicas-presidenciais.html] as POL
-  [glossario.html] as GLO
-}
-
-package "Dados (versionado)" {
-  [data/glossary.js\n(33 siglas EN→PT)] as GL
-  [data/ontology.json\n(presidente↔conflito↔arma)] as ON
-}
-
-package "Apresentação (Lógica)" {
-  [css/styles.css\n(design system)] as CSS
-  [js/nav.js\n(nav/footer)] as NAV
-  [js/glossary.js\n(popups/grid)] as GJS
-  [js/ontology.js] as OJS
-  [js/common.js] as CJS
-}
-
-package "Assets" {
-  [assets/img/*\n(domínio público/Gov. EUA)] as IMG
+package "1. Origem dos Dados (autoria, versionada em Git)" {
+  artifact "content/briefings/*.json\n9 estudos de caso" as CBR
+  artifact "content/analysis/*.md\nanalises aprofundadas" as CAN
+  artifact "content/_template.md\ncontrato de Front Matter" as CTP
+  database "data/glossary.js\n33 siglas EN / pt / glosa" as DGL
+  database "data/ontology.json\n7 administracoes\n11 conflitos\n20 sistemas de armas" as DON
+  artifact "assets/img/*\n59 imagens de dominio publico\n(DVIDS / DoD / Wikimedia)" as IMG
 }
 
-IDX ..> CSS : estilo
-IDX ..> NAV : navegação
-IDX ..> GJS : glossário
-GJS ..> GL : consome
-DTR ..> ON : cruza
-ARS ..> ON : cruza
-POL ..> ON : cruza
-GLO ..> GL : grid
-NAV ..> CSS
-OJS ..> ON
+package "2. Motor de Compilacao (SSG Engine)" {
+  component "Gerador vanilla\nzero-build\n(HTML final ja versionado)" as GEN
+  component "assets/verify.js\nvalidacao estrutural" as VER
+  component "Pagefind\nindexacao WASM pos-build" as PGF
+  component "GitHub Actions\n.github/workflows/deploy.yml" as CI
+}
 
-[Integração Externa\n(potencial, não atual)] as EXT
-EXT ..> ON : build-time (futuro)
+package "3. Processadores de Assets" {
+  component "css/styles.css\ndesign system command-center" as CSS
+  component "js/nav.js\nnav e footer DRY" as JNV
+  component "js/glossary.js\npopups e grid de termos" as JGL
+  component "js/ontology.js\nexpõe window.PM_ONTOLOGY" as JON
+  component "js/common.js\nfallback de imagem delegado" as JCM
+  component "assets/img/media.js\nregistry PM_MEDIA (slug -> path)" as JMD
+  component "Otimizador de imagem\nWebP / AVIF, dimensoes explicitas" as OPT
+}
 
-note right of EXT
-  Atual: 100% estático, sem backend.
-  Futuro: fontes (CRS/SIPRI/Wikimedia)
-  em build-time, preservando estaticidade.
+package "4. Output Final (HTML puro)" {
+  artifact "index.html\nBriefing Central" as OIDX
+  artifact "briefings.html\ncatalogo facetado" as OCAT
+  artifact "article.html\ntemplate de artigo" as OART
+  artifact "doutrina.html\narsenal-tecnologia.html\nimpactos-geopoliticos.html\npoliticas-presidenciais.html" as OSEC
+  artifact "glossario.html\nutilitario transversal" as OGLO
+  artifact "sitemap.xml\nrobots.txt\npagefind/" as OSEO
+}
+
+cloud "5. Distribuicao em Borda\nGitHub Pages / Netlify / Vercel\nCSP self-only + HSTS" as CDN
+
+actor "Analista de defesa" as USR
+
+CBR  --> GEN
+CAN  --> GEN
+CTP  ..> CBR : valida esquema
+CTP  ..> CAN : valida esquema
+DGL  --> JGL
+DON  --> JON
+IMG  --> OPT
+OPT  --> JMD
+
+GEN  --> VER : pre-publicacao
+CI   --> VER : portao 1 (bloqueante)
+CI   --> PGF : portao 2 (indice de busca)
+
+GEN  --> OIDX
+GEN  --> OCAT
+GEN  --> OART
+GEN  --> OSEC
+GEN  --> OGLO
+PGF  --> OSEO
+
+CSS  ..> OIDX
+CSS  ..> OCAT
+CSS  ..> OART
+CSS  ..> OSEC
+CSS  ..> OGLO
+JNV  ..> OIDX
+JNV  ..> OSEC
+JGL  ..> OART
+JGL  ..> OGLO
+JON  ..> OSEC
+JCM  ..> OART
+JMD  ..> OART
+
+OIDX --> CDN
+OCAT --> CDN
+OART --> CDN
+OSEC --> CDN
+OGLO --> CDN
+OSEO --> CDN
+CDN  --> USR : HTML estatico\nTTFB < 100 ms
+
+note right of GEN
+  Decisao arquitetural: nenhum toolchain
+  de compilacao (Go/Ruby/Node) e exigido
+  para autoria. Superfície de supply-chain
+  igual a zero. Gatilho de migracao para
+  Hugo: corpus acima de 150 documentos.
+  Ver docs/architecture.md secao 1.
+end note
+
+note bottom of CDN
+  Nenhum componente server-side em runtime.
+  Sem banco, sem API, sem sessao.
+  Do OWASP Top 10, apenas A03 (DOM XSS),
+  A05 e A06 sao vetores materiais.
 end note
 
 @enduml
