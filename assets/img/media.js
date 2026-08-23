@@ -34,6 +34,7 @@ window.PM_MEDIA = {
   "bush43": "assets/img/bush43.jpg",
   "obama": "assets/img/obama.jpg",
   "trump": "assets/img/trump.jpg",
+  "trump2": "assets/img/trump.jpg",
   "biden": "assets/img/biden.jpg",
   "mattis": "assets/img/mattis.jpg",
   "milley": "assets/img/milley.jpg",

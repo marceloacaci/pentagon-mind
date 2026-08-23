@@ -103,6 +103,11 @@ window.PM_CAPTIONS = {
     d: "Prioriza barganha bilateral, condicionalidade explícita quanto à partilha de encargos na OTAN e uso intensivo de instrumentos económicos coercitivos (tarifas ao abrigo das Secções 232 e 301).",
     s: "Casa Branca / domínio público"
   },
+  "trump2": {
+    t: "Donald Trump · 2º mandato (2025–2029)",
+    d: "Continuidade do America First com escalada tarifária e pressão sobre aliados para aumentar gastos; rebatizou o DoD como \"Departamento de Guerra\" (2025) e tratou a competição com a China como prioridade número um — com menos diplomacia multilateral e mais ação direta.",
+    s: "Casa Branca / domínio público"
+  },
   "biden": {
     t: "Joe Biden · 2021–2025",
     d: "Recomposição de alianças, apoio sustentado à Ucrânia e formalização da Competição de Grandes Potências como eixo da Estratégia de Defesa Nacional.",
