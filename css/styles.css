@@ -13,10 +13,15 @@
   --border:        #243244;
   --border-strong: #34465f;
 
-  --text:          #d7e0ea;
-  --text-strong:   #f3f7fb;
-  --text-muted:    #8a99ab;
-  --text-faint:    #7e8da0;   /* subido p/ ~4.7:1 sobre --bg (AA) */
+  /* ===== Texto: BRANCO ABSOLUTO como padrao (tema escuro) =====
+     --text e --text-strong sao #fff puro. Os tokens de DESTAQUE
+     (--primary, --accent, --danger, --ok) ficam intactos: cor neles
+     e semantica, nao decoracao. --text-muted/faint sobem para cinzas
+     neutros (sem tom azulado) mantendo o minimo AA de 4.5:1 sobre --bg. */
+  --text:          #ffffff;
+  --text-strong:   #ffffff;
+  --text-muted:    #b9c0c8;
+  --text-faint:    #a7aeb6;
 
   --primary:       #2f7fb5;   /* aço / azul do sensor */
   --primary-deep:  #1f5f8b;   /* azul profundo p/ btn-primary (contraste AA c/ branco) */
@@ -26,6 +31,7 @@
   --danger:        #b5453a;   /* vermelho de ameaça */
   --danger-soft:   rgba(181,69,58,0.15);
   --ok:            #3f8f5b;
+  --link-hover:    #57a6d6;
 
   --mono: "SFMono-Regular", "Roboto Mono", "Consolas", "Liberation Mono", monospace;
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -72,13 +78,109 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
-/* Texto padrão = BRANCO ABSOLUTO; destaques em âmbar mantêm cor própria */
-h1,h2,h3,h4,p,li,td,th,div,span { color: #ffffff; }
-.accent-text, .kicker, .eyebrow, .tag, .note, .faint, .muted, .pill { color: inherit; }
+/* ===== TEXTO PADRAO = BRANCO ABSOLUTO =====
+   O corpo do texto herda #fff. NAO usar um seletor amplo com !important:
+   os elementos de DESTAQUE precisam manter a sua cor semantica.
+   Regra: tudo que e prosa -> branco; tudo que e sinal -> cor propria. */
+h1, h2, h3, h4, h5, h6,
+p, li, dt, dd, td, th, blockquote, figcaption, label, summary { color: var(--text); }
+
+/* DESTAQUES PRESERVADOS (cor = significado, nao decoracao).
+   Antes estes estavam com `color: inherit`, o que os pintava de branco e
+   apagava a codificacao visual do portal. */
+.tag            { color: var(--accent); }
+.eyebrow        { color: var(--primary); }
+.kicker,
+.faint          { color: var(--text-faint); }
+.muted,
+.small.muted,
 .text-muted-keep { color: var(--text-muted); }
+.accent-text    { color: var(--accent); }
+.pill           { color: var(--text-muted); }
+.note           { color: var(--text-muted); }
+.ok-text        { color: var(--ok); }
+.danger-text    { color: var(--danger); }
+/* Dentro de um destaque colorido, a prosa filha nao volta a branco */
+.tag *, .eyebrow *, .accent-text * { color: inherit; }
+
+/* PROSA PRINCIPAL = BRANCA, mesmo quando marcada .muted.
+   O corpo de texto de um card e a descricao de um item de timeline sao
+   conteudo primario, nao metadados: em cinza (#b9c0c8) contrariavam o
+   pedido de "fonte padrao branca". Cinza fica reservado a metadados
+   reais (.note, .kicker, datas, rodapes).
+   A classe .muted e repetida no seletor para superar `.small.muted`
+   (0,2,0) e a regra `.muted` declarada mais abaixo na folha. */
+.card p, .card li,
+.card p.muted, .card p.small.muted,
+.timeline .tl-item p, .timeline .tl-item p.muted,
+.matrix-row .body p, .matrix-row .body p.muted,
+.explainer p,
+.box p, .box li, .box p.muted,
+.ds-body p, .ds-body li, .ds-body p.muted { color: var(--text); }
 
 a { color: var(--primary); text-decoration: none; }
-a:hover { color: #57a6d6; }
+a:hover { color: var(--link-hover); }
+
+/* ================= TEMA CLARO =================
+   Sobrescreve APENAS tokens — nenhuma regra de componente e duplicada,
+   por isso o tema claro herda automaticamente todo o layout, o raised
+   e o padrao de cards. No claro o texto padrao passa a preto-quase
+   absoluto: "branco absoluto" e a regra do tema escuro, e manter #fff
+   aqui daria texto branco sobre fundo branco (ilegivel). */
+[data-theme="light"] {
+  --bg:            #f4f6f8;
+  --bg-2:          #eaeef2;
+  --surface:       #ffffff;
+  --surface-2:     #f7f9fb;
+  --surface-3:     #eef2f6;
+  --border:        #d3dae2;
+  --border-strong: #b3bfcc;
+
+  --text:          #0d1117;
+  --text-strong:   #000000;
+  --text-muted:    #4a555f;
+  --text-faint:    #5b6670;
+
+  --primary:       #1f5f8b;
+  --primary-deep:  #17496b;
+  --primary-soft:  rgba(31,95,139,0.12);
+  --accent:        #8a6d10;   /* ambar escurecido: AA sobre fundo claro */
+  --accent-soft:   rgba(138,109,16,0.12);
+  --danger:        #a5352b;
+  --danger-soft:   rgba(165,53,43,0.12);
+  --ok:            #2f6f47;
+
+  --link-hover:    #123f5e;
+  --shadow:        0 1px 2px rgba(16,24,40,.06), 0 2px 8px rgba(16,24,40,.05);
+  --shadow-hover:  0 4px 14px rgba(16,24,40,.12);
+}
+/* No tema claro o degrade raised inverte o sentido: escurece a base em vez
+   de clarear o topo, senao o relevo desaparece sobre superficie branca. */
+[data-theme="light"] {
+  --raised-grad-top: #ffffff;
+  --raised-grad: linear-gradient(to bottom, #ffffff 0%, #eef2f6 100%);
+  --raised-grad-active: linear-gradient(to bottom,
+    color-mix(in srgb, var(--primary) 22%, white) 0%,
+    color-mix(in srgb, var(--primary) 38%, white) 100%);
+}
+[data-theme="light"] body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(31,95,139,0.05), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(138,109,16,0.04), transparent 55%),
+    var(--bg);
+}
+[data-theme="light"] .threatmap img { filter: saturate(.95) brightness(.98); }
+[data-theme="light"] .pin-popup,
+[data-theme="light"] .term-popup { background: #ffffff; color: var(--text); }
+[data-theme="light"] .pin-popup .tp-gloss,
+[data-theme="light"] .term-popup .tp-gloss,
+[data-theme="light"] .term-popup .tp-pt,
+[data-theme="light"] .gi-pt,
+[data-theme="light"] .glossary-item .gi-pt,
+[data-theme="light"] .explainer p,
+[data-theme="light"] .threat-legend .legend-row { color: var(--text); }
+[data-theme="light"] .glossary-item .gi-gloss { color: var(--text-muted); }
+[data-theme="light"] .badge-new { color: #fff; }
 
 h1,h2,h3,h4 { color: var(--text-strong); font-weight: 650; line-height: 1.25; letter-spacing: -0.01em; }
 h1 { font-size: clamp(28px, 4vw, 44px); }
@@ -204,7 +306,10 @@ img.pm-img {
 }
 /* Dentro de figure.media a altura é livre (a legenda dá o contexto). */
 figure.media img.pm-img { height: auto; }
-figure.media figcaption {
+/* Legenda PROPRIA de figure.media (filha direta), NÃO a .img-caption
+   injetada pelo js/imgzoom.js — essa é .img-zoom > figcaption e tem
+   a sua própria cor (#fff) definida no bloco de zoom abaixo. */
+figure.media > figcaption:not(.img-caption) {
   font-family: var(--mono); font-size: 11.5px; color: var(--text-faint);
   margin-top: 7px; line-height: 1.45; border-left: 1px solid var(--border-strong); padding-left: 9px;
 }
@@ -292,10 +397,19 @@ table.data td.k { color: var(--text-strong); font-family: var(--mono); white-spa
 .flow .node .arrow { color: var(--text-faint); }
 
 /* Threat map (dashboard) */
-.threatmap { position: relative; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); }
-.threatmap img { width: 100%; display:block; filter: saturate(.85) brightness(.85); }
-.threatmap .pin { position:absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 0 4px var(--danger-soft); animation: pulse 2.2s infinite; transform: translate(-50%,-50%); }
+/* overflow visible: com hidden o .pin-popup (bottom:160%) era RECORTADO nos
+   pins proximos do topo do mapa — outra causa do "aparece e desaparece".
+   O recorte da imagem de fundo passa a ser feito no .threatmap > img. */
+.threatmap { position: relative; border: 1px solid var(--border); border-radius: var(--radius); overflow: visible; background: var(--bg-2); }
+.threatmap img { width: 100%; display:block; filter: saturate(.85) brightness(.85); border-radius: var(--radius); }
+/* O pulse anima OPACITY. O popup e filho do .pin, logo herdava a opacidade
+   animada e piscava junto com a bolinha (bug relatado). Solucao: mover a
+   animacao para um pseudo-elemento ::after, que pulsa sozinho e nao tem
+   descendentes. O .pin passa a ter opacidade constante. */
+.threatmap .pin { position:absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 0 4px var(--danger-soft); transform: translate(-50%,-50%); }
+.threatmap .pin::after { content:""; position:absolute; inset:-4px; border-radius:50%; background: var(--danger-soft); animation: pulse 2.2s infinite; pointer-events:none; z-index:-1; }
 .threatmap .pin.amber { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.threatmap .pin.amber::after { background: var(--accent-soft); }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
 .threatmap .legend { position: absolute; bottom: 10px; left: 10px; background: rgba(10,14,20,.8); border:1px solid var(--border); padding: 7px 10px; font-family: var(--mono); font-size: 11px; border-radius: 3px; }
 .threatmap .legend i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align: middle; }
@@ -368,11 +482,18 @@ footer.site .links a { color: var(--text-muted); font-family: var(--mono); font-
 .threat-legend .dot.red { background: var(--danger); }
 .threat-legend .dot.amber { background: var(--accent); }
 .threat-legend .legend-hint { color: var(--text-muted); font-size:10px; margin-top:5px; }
-.threatmap .pin { position:absolute; width:15px; height:15px; border-radius:50%; background: var(--danger); box-shadow:0 0 0 4px var(--danger-soft); transform: translate(-50%,-50%); cursor:pointer; border:none; padding:0; z-index:6; animation: pulse 2.2s infinite; }
+.threatmap .pin { position:absolute; width:15px; height:15px; border-radius:50%; background: var(--danger); box-shadow:0 0 0 4px var(--danger-soft); transform: translate(-50%,-50%); cursor:pointer; border:none; padding:0; z-index:6; }
 .threatmap .pin.amber { background: var(--accent); box-shadow:0 0 0 4px var(--accent-soft); }
-.pin-popup { position:absolute; bottom:160%; left:50%; transform: translateX(-50%); z-index:320; min-width:230px; max-width:280px; background:#0b1018; border:1px solid var(--border-strong); border-radius: var(--radius); padding:10px 12px; box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 3px 0 0 var(--accent); opacity:0; visibility:hidden; transition:.14s; pointer-events:none; color:#fff; font-family: var(--sans); font-size:12.5px; line-height:1.5; }
+/* Ponte invisivel entre o pin e o popup. O vao real e de 60% da altura do
+   pin (bottom:160%), logo a ponte precisa cobrir ~60% + folga. Medido: com
+   height:70% de 15px (~10px) o cursor atravessava e o popup fechava. */
+.threatmap .pin::before { content:""; position:absolute; left:50%; bottom:100%; transform:translateX(-50%); width:70px; height:22px; }
+.pin-popup { position:absolute; bottom:160%; left:50%; transform: translateX(-50%); z-index:320; min-width:230px; max-width:280px; background:#0b1018; border:1px solid var(--border-strong); border-radius: var(--radius); padding:10px 12px; box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 3px 0 0 var(--accent); opacity:0; visibility:hidden; transition:opacity .14s, visibility .14s; pointer-events:none; color:#fff; font-family: var(--sans); font-size:12.5px; line-height:1.5; }
 .pin-popup strong { display:block; color: var(--accent); margin-bottom:4px; }
-.pin:hover .pin-popup, .pin:focus .pin-popup { opacity:1; visibility:visible; }
+/* :focus-visible em vez de :focus evita o popup ficar preso apos clique com rato */
+.pin:hover .pin-popup, .pin:focus-visible .pin-popup { opacity:1; visibility:visible; }
+/* Pin sob o cursor sobe acima dos vizinhos, senao um pin adjacente corta o popup */
+.threatmap .pin:hover, .threatmap .pin:focus-visible { z-index:330; }
 
 /* Card "novo" badge */
 .badge-new { display:inline-block; font-family: var(--mono); font-size:10px; background: var(--accent); color:#0a0e14; padding:2px 7px; border-radius:20px; margin-left:6px; letter-spacing:.06em; }
@@ -484,3 +605,210 @@ summary:focus-visible, [tabindex]:focus-visible {
 }
 /* Remove outline apenas quando não há foco por teclado (mouse) */
 a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
+
+/* ==========================================================================
+   PADRAO DE EXIBICAO UNIFICADO  (itens 3, 4 e 5)
+   Escrito no fim da folha de proposito: estas regras consolidam o padrao
+   visual e devem vencer as definicoes pontuais anteriores por ordem de
+   cascata, SEM recorrer a !important.
+   ========================================================================== */
+
+/* --- 3.1 Escala de espacamento unica -------------------------------------- */
+:root {
+  --pad-container: 18px;   /* respiro interno de qualquer container */
+  --gap-grid:      16px;   /* distancia entre itens de uma grade */
+  --stack:         14px;   /* distancia vertical entre blocos */
+}
+
+/* --- 3.2 Superficie canonica ---------------------------------------------
+   Todo container de conteudo compartilha a MESMA assinatura visual:
+   degrade raised + borda 1px + raio + sombra + padding uniforme.
+   Cards, boxes, datasheets, explainers e tabelas passam a ser variacoes
+   de um unico padrao em vez de sete estilos independentes. */
+.card,
+.box,
+.datasheet,
+.explainer,
+.glossary-item,
+.matrix-row,
+.timeline .tl-item,
+.table-wrap {
+  background: var(--raised-grad);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--pad-container);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+/* O datasheet controla o proprio padding no <summary>/corpo */
+.datasheet { padding: 0; }
+
+/* Hover uniforme: SO relevo e borda. Nunca mudar a cor do texto no hover
+   (padrao MeuBolso) — trocar `color` provoca o efeito de "texto piscando". */
+.card:hover,
+.box:hover,
+.explainer:hover,
+.glossary-item:hover,
+.timeline .tl-item:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-hover);
+}
+/* Apenas elementos CLICAVEIS levantam. Conteudo estatico nao se move. */
+.card-link:hover { transform: translateY(-2px); }
+
+/* Primeiro e ultimo filho nao geram espaco morto dentro do container */
+.card > :first-child, .box > :first-child, .explainer > :first-child { margin-top: 0; }
+.card > :last-child,  .box > :last-child,  .explainer > :last-child  { margin-bottom: 0; }
+
+/* --- 3.3 Grades com altura consistente ----------------------------------- */
+.grid { gap: var(--gap-grid); align-items: stretch; }
+.grid > .card,
+.grid > .card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;       /* cards da mesma linha terminam alinhados */
+}
+.grid > .card > p:last-of-type { margin-top: auto; }  /* rodape colado embaixo */
+
+/* Faixas coloridas de estado, mantidas como SINAL semantico */
+.box.accent  { border-left: 3px solid var(--accent); }
+.box.danger  { border-left: 3px solid var(--danger); }
+.box.ok      { border-left: 3px solid var(--ok); }
+
+/* --- 3.4 Tabelas padronizadas ------------------------------------------- */
+.table-wrap { padding: 0; overflow-x: auto; }   /* nao quebra em ecra estreito */
+table.data { width: 100%; border-collapse: collapse; margin: 0; font-size: 14px; }
+table.data caption {
+  text-align: left; padding: 12px var(--pad-container);
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+table.data th, table.data td {
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--border); vertical-align: top;
+}
+table.data thead th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--surface-2);
+  font-family: var(--mono); font-size: 11.5px; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--text-muted);
+  border-bottom: 1px solid var(--border-strong);
+}
+table.data tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface) 45%, transparent); }
+table.data tbody tr:hover td { background: var(--surface-2); }
+table.data tbody tr:last-child td { border-bottom: none; }
+table.data td.k { color: var(--text); font-family: var(--mono); white-space: nowrap; }
+
+/* --- 4. ZOOM NA IMAGEM + LEGENDA DE CONTEXTO ----------------------------
+   Envolver a imagem em .img-zoom cria o enquadramento que recorta o zoom.
+   A imagem escala dentro do quadro (o quadro nao cresce, evitando que a
+   grade "salte" no hover). A legenda .img-caption sobe por cima. */
+/* ===== Zoom por CLIQUE + legenda de contexto =====
+   Comportamento: clicar (ou Enter/Espaco) expande o PROPRIO container
+   (.img-zoom.expanded) para muito maior; o layout em redor reflui para
+   acomodar (em grelha ocupa a linha toda; em bloco empurra o conteudo
+   seguinte). A legenda fica persistente no estado expandido. */
+.img-zoom {
+  position: relative;
+  display: block;
+  overflow: hidden;                 /* recorta a imagem no estado base */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  cursor: zoom-in;
+  margin: 0;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.img-zoom img.pm-img,
+.img-zoom img {
+  display: block; width: 100%; height: 180px;
+  object-fit: 0; object-position: center;
+  object-fit: cover; border: none; border-radius: 0;
+  transform: scale(1);
+  transition: transform .4s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+.img-zoom:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Estado expandido: o container CRESEE; os vizinhos ajustam.
+   Sem escala interna — o quadro em si fica grande. */
+.img-zoom.expanded {
+  cursor: zoom-out;
+  width: min(94vw, 760px);
+  max-width: 100%;
+  margin: 14px auto;
+  z-index: 50;
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+/* Em grelha, ocupa a linha inteira e empurra os outros itens para baixo. */
+.grid .img-zoom.expanded { grid-column: 1 / -1; }
+.img-zoom.expanded img.pm-img,
+.img-zoom.expanded img {
+  height: clamp(320px, 52vh, 520px);
+  transform: scale(1);
+}
+
+/* Legenda: oculta por padrao; visivel e persistente no expandido. */
+.img-caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 14px 16px;
+  background: linear-gradient(to top, rgba(6,9,14,.97) 0%, rgba(6,9,14,.9) 55%, rgba(6,9,14,0) 99%);
+  color: #fff;                      /* texto padrao da imagem = branco absoluto */
+  font-family: var(--sans); font-size: 13px; line-height: 1.6;
+  transform: translateY(101%);
+  opacity: 0;
+  transition: transform .3s ease, opacity .3s ease;
+  pointer-events: none;
+}
+.img-zoom.expanded .img-caption { transform: translateY(0); opacity: 1; }
+/* Titulo: um pouco maior e negrito (pedido). */
+.img-caption strong {
+  display: block; color: #fff; font-weight: 700;
+  font-family: var(--sans); font-size: 14.5px; letter-spacing: .01em;
+  text-transform: none; margin-bottom: 5px;
+}
+.img-caption .src { display: block; margin-top: 5px; color: #e6ebf1; font-size: 11.5px; }
+/* Indicador de clique: amplia / fecha */
+.img-zoom::after {
+  content: "⤢"; position: absolute; top: 8px; right: 10px; z-index: 2;
+  width: 26px; height: 26px; display: grid; place-items: center;
+  background: rgba(6,9,14,.72); color: #fff;
+  border-radius: 50%; font-size: 13px;
+  opacity: .85; transition: opacity .2s ease;
+}
+.img-zoom.expanded::after { content: "✕"; }
+.img-zoom:hover::after { opacity: 1; }
+/* Respeita quem desativou animacoes no sistema */
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom img, .img-caption { transition: none; }
+}
+/* Dentro de figure.media a altura é livre (imagem documental). No estado
+   expandido, porém, o container cresce e a imagem mostra-se inteira e maior;
+   usa-se contain para não cortar o conteúdo. Esta regra é MAIS específica
+   (0,3,2) que o height:auto acima, logo vence no estado expandido. */
+figure.media .img-zoom.expanded img,
+.img-zoom.expanded img {
+  height: clamp(360px, 70vh, 640px);
+  object-fit: cover;
+}
+figure.media .img-zoom.expanded img { object-fit: contain; height: auto; max-height: 88vh; }
+
+/* --- 5. BOTAO DE TEMA ---------------------------------------------------- */
+.theme-toggle {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 34px; flex: 0 0 auto;
+  background: var(--raised-grad);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer; font-size: 15px; line-height: 1;
+  box-shadow: var(--shadow);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.theme-toggle:hover { border-color: var(--primary); box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.theme-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Evita o "flash" do tema errado antes do JS aplicar o atributo */
+html[data-theme] { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }

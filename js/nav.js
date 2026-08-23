@@ -33,6 +33,7 @@
         "</a>" +
         '<button type="button" class="nav-toggle" aria-label="Menu">≡</button>' +
         '<nav class="nav-links">' + links + "</nav>" +
+        '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema"></button>' +
       "</div>";
     // Mark active link now that nav exists
     var path = location.pathname.split("/").pop() || "index.html";
@@ -67,9 +68,48 @@
       "</div>";
   }
 
+  /* ===== Tema claro/escuro =====
+     A escolha explicita do utilizador (localStorage) tem prioridade sobre a
+     preferencia do sistema. O atributo e escrito em <html> para que os
+     tokens [data-theme="light"] entrem em vigor. */
+  var THEME_KEY = "pm-theme";
+
+  function currentTheme() {
+    try {
+      var saved = localStorage.getItem(THEME_KEY);
+      if (saved === "light" || saved === "dark") return saved;
+    } catch (e) { /* localStorage bloqueado: cai na preferencia do sistema */ }
+    return (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches)
+      ? "light" : "dark";
+  }
+
+  function applyTheme(t) {
+    document.documentElement.setAttribute("data-theme", t);
+    var btn = document.getElementById("themeToggle");
+    if (btn) {
+      // O icone mostra o tema que sera ativado, nao o atual.
+      btn.textContent = (t === "light") ? "☾" : "☀";
+      btn.setAttribute("aria-label",
+        t === "light" ? "Alternar para tema escuro" : "Alternar para tema claro");
+      btn.setAttribute("aria-pressed", t === "light" ? "true" : "false");
+    }
+  }
+
+  function initTheme() {
+    applyTheme(currentTheme());
+    var btn = document.getElementById("themeToggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* sessao apenas */ }
+      applyTheme(next);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     buildTopbar();
     buildFooter();
+    initTheme();
     // active link + toggle handled in common.js
   });
 })();

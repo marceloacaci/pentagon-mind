@@ -7,6 +7,7 @@
   <meta name="description" content="A OTAN como instrumento de política de defesa dos EUA: Artigo 5, comando integrado, partilha de encargos (2% e 5% do PIB), flanco leste e alargamento pós-2022." />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <script>(function(){try{var t=localStorage.getItem("pm-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 </head>
 <body>
   <div id="site-topbar"></div>
@@ -220,9 +221,11 @@
   <footer id="site-footer"></footer>
 
   <script src="assets/img/media.js"></script>
+  <script src="data/captions.js"></script>
   <script src="data/glossary.js"></script>
   <script src="js/common.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/imgzoom.js"></script>
   <script src="js/glossary.js"></script>
   <script src="js/ontology.js"></script>
   <script>
@@ -230,6 +233,7 @@
       var slug = img.getAttribute("data-slug");
       if (window.PM_MEDIA && window.PM_MEDIA[slug]) img.src = window.PM_MEDIA[slug];
     });
+    if (window.PM_enhanceImages) window.PM_enhanceImages();
     if (window.PM_bindTermPopups) window.PM_bindTermPopups();
   </script>
 </body>
