@@ -17,3 +17,7 @@ Thumbs.db
 pagefind/
 docs/uml/*.png
 docs/uml/*.svg
+
+# PENTAGON-MIND watcher runtime state
+.pm_watch.log
+.pm_watch.pid
