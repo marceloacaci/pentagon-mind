@@ -4,6 +4,66 @@
    Padrão RAND / CSIS / SIPRI
    ============================================================ */
 
+/* ===== Acessibilidade: link "Pular para o conteúdo" (WCAG 2.1 AA) =====
+   Fica oculto visualmente e torna-se visível ao receber foco por teclado,
+   sendo o primeiro elemento focável da página. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 13px;
+  box-shadow: var(--shadow-hover);
+  transition: top .15s ease;
+}
+.skip-link:focus, .skip-link:focus-visible {
+  top: 12px;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===== Acessibilidade: utilitário visually-hidden (texto para leitores de tela) ===== */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Campo de busca no topbar (US-09) ===== */
+.nav-search { display: flex; align-items: center; margin-left: auto; }
+.nav-search input[type="search"] {
+  width: 220px;
+  max-width: 38vw;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 12px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.nav-search input[type="search"]::placeholder { color: var(--text-faint); }
+.nav-search input[type="search"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--primary);
+}
+@media (max-width: 980px) {
+  .nav-search { display: none; } /* o campo de busca completo vive em busca.html no mobile */
+}
+
 :root {
   --bg:            #14161a;   /* tema escuro MeuBolso (base do degradê raised) */
   --bg-2:          #1a2230;
@@ -833,3 +893,37 @@ figure.media .img-zoom.expanded img { object-fit: contain; height: auto; max-hei
 /* Evita o "flash" do tema errado antes do JS aplicar o atributo */
 html[data-theme] { color-scheme: dark; }
 html[data-theme="light"] { color-scheme: light; }
+
+/* ===== Busca (busca.html / US-09) ===== */
+.search-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 8px 0 4px;
+}
+.search-form input[type="search"] {
+  flex: 1 1 280px;
+  min-width: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.search-form input[type="search"]::placeholder { color: var(--text-faint); }
+.search-form input[type="search"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--primary);
+}
+.search-status { margin: 10px 0 16px; min-height: 1.2em; }
+#search-results mark {
+  background: var(--accent-soft);
+  color: var(--text);
+  padding: 0 2px;
+  border-radius: 3px;
+}

@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const PAGES = ["index.html","doutrina.html","politicas-presidenciais.html","arsenal-tecnologia.html","impactos-geopoliticos.html","glossario.html","briefings.html","article.html"];
+const PAGES = ["index.html","doutrina.html","politicas-presidenciais.html","arsenal-tecnologia.html","impactos-geopoliticos.html","glossario.html","briefings.html","busca.html","article.html"];
 let errors = 0;
 const log = (ok, msg) => { console.log((ok ? "  OK  " : " FAIL ") + msg); if (!ok) errors++; };
 
@@ -47,7 +47,7 @@ try {
 } catch (e) { log(false, "ontology.json: " + e.message); }
 
 // 5. Required JS files referenced exist
-for (const f of ["js/common.js","js/nav.js","js/ontology.js","js/glossary.js","data/glossary.js","js/article.js","js/briefings.js"]) {
+for (const f of ["js/common.js","js/nav.js","js/ontology.js","js/glossary.js","data/glossary.js","js/article.js","js/briefings.js","js/search.js"]) {
   log(fs.existsSync(path.join(ROOT, f)), "script present: " + f);
 }
 
@@ -77,7 +77,7 @@ for (const f of ["js/common.js","js/nav.js","js/ontology.js","js/glossary.js","d
 
 // 6. Node syntax check on JS
 const { execSync } = require("child_process");
-for (const f of ["js/common.js","js/nav.js","js/ontology.js","js/glossary.js","data/glossary.js","js/article.js","js/briefings.js"]) {
+for (const f of ["js/common.js","js/nav.js","js/ontology.js","js/glossary.js","data/glossary.js","js/article.js","js/briefings.js","js/search.js"]) {
   try { execSync("node --check " + path.join(ROOT, f)); log(true, "node --check: " + f); }
   catch (e) { log(false, "node --check: " + f + " -> " + e.message); }
 }

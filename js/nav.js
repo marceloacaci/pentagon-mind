@@ -15,6 +15,7 @@
     { href: "impactos-geopoliticos.html", label: "GEOPOLÍTICA" },
     { href: "dominios-estrategicos.html", label: "NÃO-CINÉTICO" },
     { href: "briefings.html", label: "BRIEFINGS" },
+    { href: "busca.html", label: "BUSCA" },
     { href: "glossario.html", label: "GLOSSÁRIO" }
   ];
 
@@ -31,16 +32,21 @@
           '<span class="glyph">PM</span>' +
           '<span>PENTAGON-MIND<small>DOUTRINA · TECNOLOGIA · GEOPOLÍTICA</small></span>' +
         "</a>" +
-        '<button type="button" class="nav-toggle" aria-label="Menu">≡</button>' +
-        '<nav class="nav-links">' + links + "</nav>" +
+        '<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="pm-nav-links">≡</button>' +
+        '<nav class="nav-links" id="pm-nav-links">' + links + '</nav>' +
+        '<form class="nav-search" role="search" action="busca.html" method="get">' +
+          '<label class="visually-hidden" for="pm-search">Buscar no portal</label>' +
+          '<input type="search" id="pm-search" name="q" placeholder="Buscar sigla, arma, operação…" autocomplete="off" />' +
+        '</form>' +
         '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema"></button>' +
-      "</div>";
+      '</div>';
     // Mark active link now that nav exists
-    var path = location.pathname.split("/").pop() || "index.html";
-    bar.querySelectorAll(".nav-links a").forEach(function (a) {
-      var href = a.getAttribute("href");
-      if (href && (href === path || (path === "" && href === "index.html"))) {
-        a.classList.add("active");
+    var path = location.pathname.split('/').pop() || 'index.html';
+    bar.querySelectorAll('.nav-links a').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && (href === path || (path === '' && href === 'index.html'))) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
       }
     });
   }
@@ -63,6 +69,7 @@
           '<a href="arsenal-tecnologia.html">Arsenal</a>' +
           '<a href="impactos-geopoliticos.html">Geopolítica</a>' +
           '<a href="briefings.html">Briefings</a>' +
+          '<a href="busca.html">Busca</a>' +
           '<a href="glossario.html">Glossário</a>' +
         '</div>' +
       "</div>";

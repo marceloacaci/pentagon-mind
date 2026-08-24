@@ -46,10 +46,22 @@
     var links = document.querySelector(".nav-links");
     if (t && links) {
       t.addEventListener("click", function () {
-        links.classList.toggle("open");
+        var open = links.classList.toggle("open");
+        t.setAttribute("aria-expanded", open ? "true" : "false");
       });
       links.addEventListener("click", function (e) {
-        if (e.target.tagName === "A") links.classList.remove("open");
+        if (e.target.tagName === "A") {
+          links.classList.remove("open");
+          t.setAttribute("aria-expanded", "false");
+        }
+      });
+      // Escape fecha o menu e devolve o foco ao controle (WCAG 2.1 AA)
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && links.classList.contains("open")) {
+          links.classList.remove("open");
+          t.setAttribute("aria-expanded", "false");
+          t.focus();
+        }
       });
     }
   });

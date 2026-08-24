@@ -1,0 +1,4 @@
+# PENTAGON-MIND — robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://marceloacaci.github.io/pentagon-mind/sitemap.xml
