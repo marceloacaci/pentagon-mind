@@ -21,3 +21,8 @@ docs/uml/*.svg
 # PENTAGON-MIND watcher runtime state
 .pm_watch.log
 .pm_watch.pid
+
+# PENTAGON-MIND watcher runtime state
+.pm_watch.log
+.pm_watch.pid
+.pm_watch.lock
