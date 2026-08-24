@@ -169,6 +169,33 @@ window.PM_GLOSSARY = {
     full: "Fix Code Skill (verificação por medição real)",
     pt: "Habilidade de Correção por Medição Real",
     gloss: "Protocolo do Hermes: nunca afirmar 'pronto' sem medir/testar de fato no browser."
+  },
+
+  /* --- Termos adicionados no Sprint 3 (expansão do glossário) --- */
+  "LDO": {
+    full: "Land Domain Operations",
+    pt: "Operações no Domínio Terrestre",
+    gloss: "Doutrina do Exército dos EUA (FM 3-0) que integra a manobra terrestre à Operação Multidomínio (MDO), conectando terra, ar, mar, espaço e ciberespaço."
+  },
+  "AOR": {
+    full: "Area of Responsibility",
+    pt: "Área de Responsabilidade",
+    gloss: "Região geográfica atribuída a um comandante combatente (ex: CENTCOM, INDOPACOM) para planejar e conduzir operações."
+  },
+  "BMD": {
+    full: "Ballistic Missile Defense",
+    pt: "Defesa contra Mísseis Balísticos",
+    gloss: "Sistemas (THAAD, Aegis BMD, GBI) que detectam, rastreiam e interceptam mísseis balísticos em voo — componente-chave da Dissuasão Integrada."
+  },
+  "ASAT": {
+    full: "Anti-Satellite",
+    pt: "Anti-Satélite",
+    gloss: "Capacidade de cegar/neutralizar satélites adversários; central na competição espaço-ciberespaço e na criação da USSF."
+  },
+  "CBRN": {
+    full: "Chemical, Biological, Radiological and Nuclear",
+    pt: "Químico, Biológico, Radiológico e Nuclear",
+    gloss: "Ameaças de destruição em massa e o espectro de defesa NBQR; cobre pronta-resposta e descontaminação."
   }
 };
 
