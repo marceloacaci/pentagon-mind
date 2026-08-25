@@ -98,3 +98,57 @@
   left: 0.5rem;
   top: 0.5rem;
 }
+
+/* ============================================================
+   MODO TEMA CLARO (light mode)
+   Ativado pela classe `light` no <html> (toggle no Navbar).
+   Re-mapeia o design system "Command Center" para cores claras.
+   ============================================================ */
+html.light body {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-command-darkest { background-color: #f8fafc !important; }
+html.light .bg-command-dark { background-color: #ffffff !important; }
+html.light .bg-command-dark\/95 { background-color: #f8fafc !important; }
+html.light .bg-command-bg { background-color: #e2e8f0 !important; }
+html.light .bg-command-surface { background-color: #eef2f7 !important; }
+html.light .bg-command-card { background-color: #ffffff !important; }
+
+html.light .border-command-border { border-color: #cbd5e1 !important; }
+html.light .border-command-borderStrong { border-color: #94a3b8 !important; }
+html.light .border-tactical-amber\/20 { border-color: rgba(201,162,39,0.4) !important; }
+html.light .border-tactical-amber\/40 { border-color: rgba(201,162,39,0.5) !important; }
+
+html.light .text-slate-100 { color: #0f172a !important; }
+html.light .text-slate-200 { color: #1e293b !important; }
+html.light .text-slate-300 { color: #334155 !important; }
+html.light .text-slate-400 { color: #475569 !important; }
+html.light .text-slate-500 { color: #64748b !important; }
+
+html.light .bg-military-900 { background-color: #dbeafe !important; }
+html.light .text-military-50 { color: #1e40af !important; }
+html.light .text-military-400 { color: #2563eb !important; }
+html.light .text-military-600 { color: #1d4ed8 !important; }
+
+html.light .bg-tactical-amber\/10 { background-color: rgba(201,162,39,0.15) !important; }
+html.light .text-tactical-amberGlow { color: #b8860b !important; }
+html.light .text-tactical-red { color: #c0392b !important; }
+
+/* Componentes com @apply (definidos em @layer components) */
+html.light .card-theme {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.light .section-title { color: #0f172a !important; }
+html.light .muted { color: #475569 !important; }
+html.light .prose-command p { color: #334155 !important; }
+html.light .prose-command h3 { color: #0f172a !important; }
+html.light .prose-command ul { color: #334155 !important; }
+
+/* Scrollbar clara */
+html.light ::-webkit-scrollbar-track { background: #e2e8f0; }
+html.light ::-webkit-scrollbar-thumb { background: #94a3b8; }
+html.light ::-webkit-scrollbar-thumb:hover { background: #2f7fb5; }

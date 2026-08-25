@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Shield, Menu, X, Eye, Type, Contrast } from 'lucide-react';
+import { Shield, Menu, X, Eye, Type, Contrast, Sun, Moon } from 'lucide-react';
 import { useAccessibility, type FontScale } from '@/components/a11y/AccessibilityProvider';
 import { cn } from '@/lib/cn';
 
@@ -51,7 +51,7 @@ function ReadinessIndicator() {
 
 export function Navbar() {
   const pathname = usePathname();
-  const { fontScale, setFontScale, highContrast, toggleHighContrast } = useAccessibility();
+  const { fontScale, setFontScale, highContrast, toggleHighContrast, theme, toggleTheme } = useAccessibility();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -67,8 +67,8 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.slice(1, 8).map((l) => (
+        <nav aria-label="Navegação principal" className="hidden flex-wrap items-center gap-1 lg:flex">
+          {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -121,6 +121,21 @@ export function Navbar() {
           >
             <Contrast size={14} aria-hidden="true" />
             <span className="hidden sm:inline">Contraste</span>
+          </button>
+
+          {/* Tema claro/escuro */}
+          <button
+            type="button"
+            aria-pressed={theme === 'light'}
+            onClick={toggleTheme}
+            title={theme === 'light' ? 'Mudar para tema escuro' : 'Mudar para tema claro'}
+            className={cn(
+              'flex items-center gap-1 rounded border border-command-border bg-command-bg px-2 py-1.5 text-xs font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-military-500',
+              theme === 'light' ? 'bg-military-500 text-white' : 'text-slate-300 hover:bg-command-surface',
+            )}
+          >
+            {theme === 'light' ? <Moon size={14} aria-hidden="true" /> : <Sun size={14} aria-hidden="true" />}
+            <span className="hidden sm:inline">{theme === 'light' ? 'Escuro' : 'Claro'}</span>
           </button>
 
           <Link
