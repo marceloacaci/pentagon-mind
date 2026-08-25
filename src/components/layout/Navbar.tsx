@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Shield, Menu, X, Eye, Type, Contrast, Sun, Moon } from 'lucide-react';
+import { Shield, Menu, X, Eye, Type, Contrast, Sun, Moon, Search } from 'lucide-react';
 import { useAccessibility, type FontScale } from '@/components/a11y/AccessibilityProvider';
 import { cn } from '@/lib/cn';
 
@@ -51,8 +51,16 @@ function ReadinessIndicator() {
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { fontScale, setFontScale, highContrast, toggleHighContrast, theme, toggleTheme } = useAccessibility();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const onSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (q) router.push(`/busca?q=${encodeURIComponent(q)}`);
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-command-border bg-command-dark/95 backdrop-blur">
@@ -66,6 +74,20 @@ export function Navbar() {
             Command Center
           </span>
         </Link>
+
+        <form onSubmit={onSearchSubmit} role="search" className="hidden items-center md:flex" aria-label="Busca global">
+          <div className="relative">
+            <Search size={14} className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-slate-500" aria-hidden="true" />
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Buscar…"
+              aria-label="Termo de busca global"
+              className="w-36 rounded border border-command-border bg-command-bg py-1.5 pl-7 pr-2 text-xs text-slate-200 placeholder:text-slate-500 focus:w-48 focus:border-military-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-military-500"
+            />
+          </div>
+        </form>
 
         <nav aria-label="Navegação principal" className="hidden flex-wrap items-center gap-1 lg:flex">
           {NAV_LINKS.map((l) => (

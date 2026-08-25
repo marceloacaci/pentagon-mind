@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { buildSearchIndex, searchItems } from '@/lib/search';
 import { arsenalData } from '@/data/arsenal';
@@ -30,6 +30,15 @@ export default function BuscaPage() {
   const [query, setQuery] = useState('');
   const [debounced, setDebounced] = useState('');
   const [kinds, setKinds] = useState<SearchableItem['kind'][]>([]);
+
+  // Pré-preencher a partir de ?q= (deep-link compartilhável vindo da navbar)
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) {
+      setQuery(q);
+      setDebounced(q);
+    }
+  }, []);
 
   // debounce simples
   useMemo(() => {
