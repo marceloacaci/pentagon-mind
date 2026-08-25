@@ -30,6 +30,8 @@ export default function BuscaPage() {
   const [query, setQuery] = useState('');
   const [debounced, setDebounced] = useState('');
   const [kinds, setKinds] = useState<SearchableItem['kind'][]>([]);
+  const [regions, setRegions] = useState<string[]>([]);
+  const [periods, setPeriods] = useState<string[]>([]);
 
   // Pré-preencher a partir de ?q= (deep-link compartilhável vindo da navbar)
   useEffect(() => {
@@ -40,6 +42,22 @@ export default function BuscaPage() {
     }
   }, []);
 
+  const toggleKind = (k: SearchableItem['kind']) =>
+    setKinds((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
+  const toggleRegion = (r: string) =>
+    setRegions((prev) => (prev.includes(r) ? prev.filter((x) => x !== r) : [...prev, r]));
+  const togglePeriod = (p: string) =>
+    setPeriods((prev) => (prev.includes(p) ? prev.filter((x) => x !== p) : [...prev, p]));
+
+  const allRegions = useMemo(
+    () => Array.from(new Set(index.map((i) => i.region).filter((r): r is string => Boolean(r)))).sort(),
+    [index],
+  );
+  const allPeriods = useMemo(
+    () => Array.from(new Set(index.map((i) => i.period).filter((p): p is string => Boolean(p)))).sort(),
+    [index],
+  );
+
   // debounce simples
   useMemo(() => {
     const t = setTimeout(() => setDebounced(query), 250);
@@ -47,12 +65,9 @@ export default function BuscaPage() {
   }, [query]);
 
   const results = useMemo(
-    () => (debounced.trim() ? searchItems(index, { query: debounced, kinds }) : []),
-    [debounced, index, kinds],
+    () => (debounced.trim() ? searchItems(index, { query: debounced, kinds, regions, periods }) : []),
+    [debounced, index, kinds, regions, periods],
   );
-
-  const toggleKind = (k: SearchableItem['kind']) =>
-    setKinds((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
 
   const hrefFor = (item: SearchableItem) => {
     switch (item.kind) {
@@ -98,6 +113,46 @@ export default function BuscaPage() {
           </button>
         ))}
       </div>
+
+      {allRegions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filtros por região">
+          <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Região:</span>
+          {allRegions.map((r) => (
+            <button
+              key={r}
+              type="button"
+              aria-pressed={regions.includes(r)}
+              onClick={() => toggleRegion(r)}
+              className={cn(
+                'rounded border px-3 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-military-500',
+                regions.includes(r) ? 'border-tactical-amber bg-tactical-amber/10 text-tactical-amberGlow' : 'border-command-border text-slate-300 hover:bg-command-card',
+              )}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {allPeriods.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filtros por período">
+          <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Período:</span>
+          {allPeriods.map((p) => (
+            <button
+              key={p}
+              type="button"
+              aria-pressed={periods.includes(p)}
+              onClick={() => togglePeriod(p)}
+              className={cn(
+                'rounded border px-3 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-military-500',
+                periods.includes(p) ? 'border-military-500 bg-military-500 text-white' : 'border-command-border text-slate-300 hover:bg-command-card',
+              )}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      )}
 
       {debounced.trim() && (
         <p className="text-sm text-slate-400">{results.length} resultado(s) para “{debounced}”.</p>
