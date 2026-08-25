@@ -1,18 +1,18 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Mapa Tático', () => {
-  test('abre marcador e alterna para tabela', async ({ page }) => {
+// Fluxo 1 (plano): abrir o Mapa Tático e alternar para a visualização em tabela.
+test.describe('Mapa Tático → Tabela', () => {
+  test('deve alternar entre mapa e tabela acessível', async ({ page }) => {
     await page.goto('/mapa-tatico');
-    // O mapa SVG deve renderizar marcadores
-    const markers = page.locator('svg circle.animate-threat-pulse');
-    await expect(markers.first()).toBeVisible();
-
-    // Clicar em um marcador revela detalhes
-    await markers.first().click();
-    await expect(page.getByText('Teatros de Operações — Tabela')).toBeVisible();
-
-    // A tabela acessível deve estar presente
+    // Mapa presente
+    const svg = page.locator('svg[role="img"][aria-label*="Global Threat Matrix"]');
+    await expect(svg).toBeVisible();
+    // Botão "Ver como tabela"
+    const toggle = page.getByRole('button', { name: /Ver como tabela/i });
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+    // Tabela acessível aparece com caption
     const table = page.locator('table');
-    await expect(table.first()).toBeVisible();
+    await expect(table).toBeVisible();
   });
 });

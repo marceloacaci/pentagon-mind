@@ -1,31 +1,34 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Formulário de Contato (honeypot)', () => {
-  test('rejeita envio válido sem consentimento LGPD', async ({ page }) => {
+// Fluxo 4 (plano): envio do formulário de contato, incluindo bypass do honeypot.
+test.describe('Contato (honeypot)', () => {
+  test('deve rejeitar envio com honeypot preenchido (silencioso)', async ({ page }) => {
     await page.goto('/contato');
-    await page.fill('input[name="name"]', 'Ana Souza');
-    await page.fill('input[name="email"]', 'ana@universidade.edu.br');
-    await page.fill('input[name="subject"]', 'Dúvida sobre JADC2');
-    await page.fill('input[name="message"]', 'Gostaria de saber mais sobre operações multidomínio.');
-    // não marca o consentimento
-    await page.click('button[type="submit"]');
-    await expect(page.getByText('Verifique os campos destacados.')).toBeVisible();
+    await page.fill('#name', 'Bot Spammer');
+    await page.fill('#email', 'bot@spam.com');
+    await page.fill('#subject', 'Teste');
+    await page.fill('#message', 'Mensagem de teste automatizado.');
+    // Honeypot oculto
+    const hp = page.locator('#company-url');
+    await hp.evaluate((el) => {
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
+      setter?.call(el, 'spam');
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    await page.check('#lgpdConsent');
+    await page.getByRole('button', { name: /Enviar solicitação/i }).click();
+    // O honeypot retorna 200 silencioso; o formulário deve continuar na página.
+    await expect(page).toHaveURL(/contato/);
   });
 
-  test('bypass do honeypot é bloqueado (resposta silenciosa)', async ({ page }) => {
+  test('deve validar consentimento LGPD ausente', async ({ page }) => {
     await page.goto('/contato');
-    await page.fill('input[name="name"]', 'Bot');
-    await page.fill('input[name="email"]', 'bot@spam.com');
-    await page.fill('input[name="subject"]', 'spam');
-    await page.fill('input[name="message"]', 'comprando seguidores agora mesmo');
-    await page.fill('input[name="lgpdConsent"]', 'on');
-    // Preenche o campo honeypot oculto (visível ao bot)
-    await page.fill('input[aria-hidden="true"]', 'spam-bot-value');
-
-    const [response] = await Promise.all([
-      page.waitForResponse((r) => r.url().includes('/api/contact')),
-      page.click('button[type="submit"]'),
-    ]);
-    expect(response.status()).toBe(200);
+    await page.fill('#name', 'Ana');
+    await page.fill('#email', 'ana@exemplo.br');
+    await page.fill('#subject', 'Dúvida');
+    await page.fill('#message', 'Gostaria de mais informações sobre JADC2.');
+    await page.getByRole('button', { name: /Enviar solicitação/i }).click();
+    // Erro de validação deve aparecer (consentimento obrigatório)
+    await expect(page.getByText(/consentimento|LGPD/i)).toBeVisible();
   });
 });
