@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { href: '/impactos-geopoliticos', label: 'Geopolítica' },
   { href: '/orcamento-defesa', label: 'Orçamento' },
   { href: '/politicas-presidenciais', label: 'Presidentes' },
+  { href: '/linha-do-tempo', label: 'Linha do Tempo' },
   { href: '/otan', label: 'OTAN' },
   { href: '/briefings', label: 'Briefings' },
   { href: '/glossario', label: 'Glossário' },
