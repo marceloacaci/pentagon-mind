@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { BudgetChart } from '@/components/features/BudgetChart';
+import { BudgetByBranchChart } from '@/components/features/BudgetByBranchChart';
 import { Badge } from '@/components/ui/Badge';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function OrcamentoDefesaPage() {
         </p>
       </header>
       <BudgetChart />
+      <BudgetByBranchChart />
     </div>
   );
 }
