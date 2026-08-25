@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Accessibility font scaling (seletor A/A+/A++) */
+  html.font-normal-view {
+    font-size: 16px;
+  }
+  html.font-large-view {
+    font-size: 18px;
+  }
+  html.font-xlarge-view {
+    font-size: 20px;
+  }
+
+  /* Tactical High Contrast mode */
+  body.high-contrast {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  body.high-contrast .card-theme {
+    background-color: #050505 !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+}
+
+@layer components {
+  .card-theme {
+    @apply rounded-lg border border-command-border bg-command-card;
+  }
+  .section-title {
+    @apply font-display text-xl font-bold text-slate-100 sm:text-2xl;
+  }
+  .muted {
+    @apply text-sm text-slate-400;
+  }
+  .prose-command p {
+    @apply mb-3 text-sm leading-relaxed text-slate-300;
+  }
+  .prose-command h3 {
+    @apply mb-2 mt-4 font-display text-lg font-semibold text-slate-100;
+  }
+  .prose-command ul {
+    @apply mb-3 list-disc space-y-1 pl-5 text-sm text-slate-300;
+  }
+}
+
+/* Tactical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e1116;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2f37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2f7fb5;
+}
+
+/* Tactical glowing pulse animation (marcadores de flashpoint) */
+@keyframes tactical-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(201, 162, 39, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 162, 39, 0);
+  }
+}
+.animate-threat-pulse {
+  animation: tactical-pulse 2.2s infinite;
+}
+
+/* Skip link (acessibilidade) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}

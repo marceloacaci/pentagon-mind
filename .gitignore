@@ -1,28 +1,34 @@
-# Logs
-assets/download.log
-
-# Dependências (não usadas no build, mas por segurança)
+# Dependências
 node_modules/
+.pnp
+.pnp.js
 
-# OS / editor
-.DS_Store
-Thumbs.db
-*.swp
+# Build / Next.js
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
 
 # Ambiente
 .env
 .env.local
+.env*.local
 
-# Artefatos de build (gerados pelo pipeline, nunca versionados)
-pagefind/
-docs/uml/*.png
-docs/uml/*.svg
+# Testes e lint
+coverage/
+playwright-report/
+test-results/
+.nyc_output
 
-# PENTAGON-MIND watcher runtime state
-.pm_watch.log
-.pm_watch.pid
+# Editores / SO
+.DS_Store
+*.log
+npm-debug.log*
+.vscode/
+.idea/
 
-# PENTAGON-MIND watcher runtime state
-.pm_watch.log
-.pm_watch.pid
-.pm_watch.lock
+# Sitemap gerado (produzido no postbuild)
+public/robots.txt
+public/sitemap*.xml
